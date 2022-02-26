@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.myspring.momeche001.member.vo.MemberVO" alias="memberVO" />
+		<typeAlias type="com.myspring.momeche001.product.vo.ProductVO" alias="productVO" />
+		<typeAlias type="com.myspring.momeche001.product.vo.ImageFileVO" alias="imageFileVO" />
+		<typeAlias type="com.myspring.momeche001.cart.vo.CartVO" alias="cartVO"/>
+		<typeAlias type="com.myspring.momeche001.order.vo.OrderVO" alias="orderVO"/>
+		<typeAlias type="com.myspring.momeche001.mypage.vo.MyPageVO" alias="mypageVO"/>
+		
+		<typeAlias type="com.myspring.momeche001.board.vo.ArticleVO" alias="articleVO" />
+		<typeAlias type="com.myspring.momeche001.board.vo.ImageVO" alias="imageVO" />
+		
+		<typeAlias type="com.myspring.momeche001.board.vo.NoticeVO" alias="noticeVO"/>
+		<typeAlias type="com.myspring.momeche001.board.vo.OtoVO" alias="otoVO"/>
+		<typeAlias type="com.myspring.momeche001.board.vo.QnaVO" alias="qnaVO"/>
+		
+		<typeAlias type="com.myspring.momeche001.info.vo.InfoVO" alias="infoVO"/>
+		
+	</typeAliases>
+</configuration>

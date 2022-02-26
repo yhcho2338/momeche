@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mypage">
+
+ <resultMap id="orderGoodsResult" type="orderVO">
+ 
+ 		<result property="order_num" column="order_num" />
+		<result property="order_id" column="order_id" />
+		<result property="mb_id" column="mb_id" />
+		<result property="pd_id" column="pd_id" />
+		<result property="pd_name" column="pd_name" />
+		<result property="order_amount" column="order_amount" />
+		<result property="receiver_name" column="receiver_name" />
+		<result property="receiver_tel1" column="receiver_tel1" />
+		<result property="receiver_tel2" column="receiver_tel2" />
+		<result property="receiver_tel3" column="receiver_tel3" />
+		<result property="receiver_zipcode" column="receiver_zipcode" />
+		<result property="receiver_road_address" column="receiver_road_address" />
+		<result property="receiver_jibun_address" column="receiver_jibun_address" />
+		<result property="receiver_other_address" column="receiver_other_address" />
+		<result property="order_date" column="order_date" />
+		<result property="order_state" column="order_state" />
+ 		
+ 
+ </resultMap>
+ 
+   <resultMap id="memResult" type="memberVO">
+		<result property="mb_id" column="mb_id" />
+        <result property="mb_pw" column="mb_pw" />
+        <result property="mb_name" column="mb_name" />
+        <result property="mb_level" column="mb_level" />
+        <result property="mb_subAdmin" column="mb_subAdmin" />
+        <result property="mb_allPrice" column="mb_allPrice" />
+        <result property="mb_allCount" column="mb_allCount" />
+        <result property="mb_likeCount" column="mb_likeCount" />
+        <result property="tel_1" column="tel_1" />
+        <result property="tel_2" column="tel_2" />
+        <result property="tel_3" column="tel_3" /> 
+        <result property="email_1" column="email_1" />
+        <result property="email_2" column="email_2" />
+        <result property="email_STS" column="email_STS" />
+        <result property="mb_birthY" column="mb_birthY" />
+        <result property="mb_birthM" column="mb_birthM" />
+        <result property="mb_birthD" column="mb_birthD" />
+        <result property="zipcode" column="zipcode" />
+        <result property="road_address" column="road_address" />
+        <result property="jibun_address" column="jibun_address" />
+        <result property="other_address" column="other_address" />        
+        <result property="join_date" column="join_date" />
+        
+        
+	</resultMap>  
+
+<!-- 마이페이지 주문내역 -->
+<select id="selectMyOrderInfo" resultMap="orderGoodsResult" parameterType="String">
+	 <![CDATA[
+		select * from order_tbl where mb_id = #{mb_id};
+
+		]]>
+
+
+</select>
+
+
+
+<!-- 정승원 220216 회원정보 -->
+
+
+<!-- 회원정보 조회 -->
+<select id="selectMyInfo" resultMap="memResult" parameterType="String">
+	 <![CDATA[
+		select * from member_tbl where mb_id = #{mb_id};
+		]]>
+</select>
+
+<!-- 회원정보 수정 -->
+<update id="updateMyInfo" parameterType="java.util.HashMap">
+	   update member_tbl
+			   <set>
+			      <if test=" mb_pw!='' and mb_pw!=null">
+			        mb_pw=#{mb_pw},
+			      </if>			 			
+			      <if test=" email_1!='' and email_1!=null">
+			         email_1=#{email_1},
+			      </if>
+			      <if test=" tel_1!='' and tel_1!=null">
+			      	 tel_1=#{tel_1},
+			      </if>
+			      <if test=" tel_2!='' and tel_2!=null">
+			      	 tel_2=#{tel_2},
+			      </if>
+			      <if test=" tel_3!='' and tel_3!=null">
+			      	 tel_3=#{tel_3},
+			      </if>
+			      <if test=" zipcode!='' and zipcode!=null">
+			      	 zipcode=#{zipcode},
+			      </if>
+			      <if test=" road_address!='' and road_address!=null">
+			      	 road_address=#{road_address},
+			      </if>
+			      <if test=" jibun_address!='' and jibun_address!=null">
+			      	 jibun_address=#{jibun_address},
+			      </if>
+			      <if test=" other_address!='' and other_address!=null">
+			      	 other_address=#{other_address},
+			      </if>
+			      
+			   </set>
+		where 
+		mb_id=#{mb_id}
+	</update>
+	
+	
+	<select id="selectMyDetailInfo" resultType="memberVO"   parameterType="String" >
+	    <![CDATA[
+			select * from member_tbl
+			where mb_id=#{mb_id}
+    	]]>
+	</select>
+	
+<!-- 정승원 220216 회원정보 끝 -->
+
+
+
+</mapper>

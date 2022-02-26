@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	    <definition name="product_main" extends="baseLayout">
+      <put-attribute name="title" value="상품 메인 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_list_main.jsp" />
+   </definition>
+   
+   
+   <definition name="/goods/productManMain" extends="baseLayout">
+      <put-attribute name="title" value="남성상품 메인 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_ManList_main.jsp" />
+   </definition>
+   
+      <definition name="/goods/productWomanMain" extends="baseLayout">
+      <put-attribute name="title" value="여성상품 메인 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_WomanList_main.jsp" />
+   </definition>
+   
+   
+    <definition name="/goods/productSort" extends="baseLayout">
+      <put-attribute name="title" value="상품 카테고리 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_List_MW.jsp" />
+   </definition>
+   
+   
+   
+   
+   <definition name="/goods/productDetail" extends="baseLayout">
+      <put-attribute name="title" value="상품상세 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_detail_basic.jsp" />
+   </definition>
+   
+   
+   <definition name="product_detail_review" extends="baseLayout">
+      <put-attribute name="title" value="상품상세 후기 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_detail_review.jsp" />
+   </definition>
+   
+   
+   <definition name="product_detail_QnA" extends="baseLayout">
+      <put-attribute name="title" value="상품상세 문의 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_detail_QnA.jsp" />
+   </definition>
+   
+   
+   
+   
+      <definition name="/goods/searchProduct" extends="baseLayout">
+         <put-attribute name="title" value="상품 검색 결과 페이지" />
+         <put-attribute name="body" value="/WEB-INF/views/product/product_search.jsp" />
+      </definition>
+   
+   
+   
+   
+   
+   
+      <definition name="/goods/productPriceSort" extends="baseLayout">
+      <put-attribute name="title" value="남성상품 높은 가격순 정렬" />
+      <put-attribute name="body" value="/WEB-INF/views/product/product_list_main.jsp" />
+   </definition>
+   
+   <!-- 체킹한 회원을 보여주는 타일즈 설정 -->
+   <definition name="/admin/product/eventChk" extends="baseLayout">
+   		<put-attribute name="title" value="체킹한 상품 목록"/>
+   		<put-attribute name="body" value="/WEB-INF/views/event/eventChk.jsp"/>
+   </definition>
+   <!-- 체킹한 회원을 보여주는 타일즈 설정 -->
+   
+   
+   
+   
+  
+</tiles-definitions>
+
+

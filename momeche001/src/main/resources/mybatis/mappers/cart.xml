@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+  <mapper namespace="mapper.cart">
+   	 
+   	<resultMap type="CartVO" id="cartResult">
+		<result property="cart_num" column="cart_num"/>
+		<result property="cart_count" column="cart_count"/>
+		<result property="pd_id" column="pd_id"/>
+		<result property="mb_id" column="mb_id"/>
+		<result property="pd_name" column="pd_name"/>
+	</resultMap>
+	
+	<resultMap id="productResult" type="productVO">
+	
+	    <result property="pd_id" column="pd_id" />
+		<result property="pd_name" column="pd_name" />
+		<result property="pd_code" column="pd_code" />
+		<result property="pd_price" column="pd_price" />
+		<result property="pd_inCount" column="pd_inCount" />
+		
+		<result property="pd_stock" column="pd_stock" />
+		<result property="pd_level" column="pd_level" />
+		<result property="pd_group1" column="pd_group1" />
+		<result property="pd_group2" column="pd_group2" />
+		<result property="pd_status" column="pd_status" />
+		
+		<result property="pd_event" column="pd_event" />
+		<result property="pd_likethis" column="pd_likethis" />
+		<result property="pd_inDate" column="pd_inDate" />
+		<result property="pd_limitDate" column="pd_limitDate" />
+		<result property="pd_content" column="pd_content" />
+		<result property="pd_fileName" column="fileName" />
+	
+	</resultMap>
+	
+	<resultMap id="imageResult" type="ImageFileVO">
+	   <result property="image_num" column="image_num" />
+	   <result property="fileName" column="fileName" />
+	   <result property="fileType" column="fileType" />
+	   <result property="pd_id" column="pd_id" />
+	   <result property="pd_name" column="pd_name" />
+	</resultMap>
+	
+	<select id="selectCountInCart" resultType="String" parameterType="cartVO">
+		<![CDATA[
+			select if(count(*)=0, 'false', 'true') from cart_tbl
+			where pd_id=#{pd_id}
+			and mb_id=#{mb_id}
+			
+		]]>
+	</select>
+	
+	<insert id="insertProductInCart" parameterType="cartVO">
+		<![CDATA[
+			insert into cart_tbl(cart_num, pd_id, mb_id, pd_name, cart_count)
+			values(#{cart_num}, #{pd_id}, #{mb_id}, #{pd_name}, #{cart_count})
+		]]>
+	</insert>
+	
+	<select id="selectCartList" parameterType="cartVO" resultMap="cartResult">
+		<![CDATA[
+			select cart_num, pd_id, mb_id, cart_count
+			from cart_tbl
+			where mb_id=#{mb_id}
+			
+		]]>
+	</select>
+	
+	 
+	 
+	<select id="selectProductList" parameterType="java.util.Map" resultMap="productResult">
+		<![CDATA[
+			select p.*, d.fileName from product_tbl p, product_d_image d
+			where p.pd_id=d.pd_id
+			and d.fileType='main_image'
+			and p.pd_id in
+		]]>
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.pd_id}
+		</foreach>
+		
+		<!--  
+		<![CDATA[
+			select p.*,d.fileName, c.cart_num from product_tbl p, product_d_image d, cart_tbl c
+			where p.pd_id = d.pd_id
+			and d.fileType='main_image'
+			and p.pd_id in
+			
+			
+		]]>
+		 
+			<foreach item="item" collection="list" open="(" separator="," close=")">
+				#{item.pd_id}			
+			</foreach>
+			 -->
+	</select>
+	<select id="selectAllCartList" resultMap = "cartResult">
+	<![CDATA[
+		select c.cart_num, c.mb_id, c.pd_id, p.pd_name, pd_price, pd_incount, c.cart_count
+		from cart_tbl c, product_tbl p, member_tbl m
+		where c.mb_id=m.mb_id and c.pd_id=p.pd_id;
+	]]>
+	
+	<!-- 
+	<![CDATA[
+		select mb_name, p.pd_name, pd_price, pd_inCount
+		from member_tbl m, product_tbl p, cart_tbl c
+		where m.mb_id=c.mb_id and p.pd_id=c.pd_id;
+		
+		
+	]]>
+	 -->
+	</select>
+	
+	<update id="updateCartProductCount" parameterType="cartVO">
+		<![CDATA[
+			update cart_tbl set cart_count=#{cart_count}
+			where mb_id=#{mb_id} 
+			and pd_id=#{pd_id}
+		]]>
+		
+	</update>
+	
+	<delete id="deleteCartProduct" parameterType="int">
+		<![CDATA[
+			delete from cart_tbl
+			where cart_num=#{cart_id}
+		]]>
+	</delete>
+	
+	<!-- 20220217 카트 전체 비우기 신우주 -->
+	<delete id="deleteAllCartProduct" parameterType="int">
+		<![CDATA[
+			delete from cart_tbl
+			where mb_id=#{mb_id}
+		]]>
+	</delete>
+	<select id="selectMaxCart_num" resultType="int">
+		<![CDATA[
+			select ifnull(max(cart_num), 0) + 1 from cart_tbl
+		]]>
+	</select>
+	
+   </mapper>

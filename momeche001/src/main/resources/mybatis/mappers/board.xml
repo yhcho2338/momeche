@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.board">
+<resultMap id="articlesResult" type="articleVO">
+    <result property="article_num" column="article_num" />
+    <result property="article_title" column="article_title" />
+    <result property="article_content" column="article_content" />
+    <result property="article_wDate" column="article_wDate" />
+    <result property="article_photo" column="article_photo" />
+    <result property="mb_id" column="mb_id" />
+    <result property="mb_name" column="mb_name"/>
+    <result property="pd_id" column="pd_id"/>
+    <result property="pd_name" column="pd_name"/>
+    <result property = "parentNO" column = "parentNO"/>
+    <result property = "depth" column = "depth"/>
+    <result property = "pos" column ="pos"/>
+    <result property = "replyContent" column = "replyContent"/>
+  </resultMap> 
+  
+  <resultMap id="imgResult" type="imageVO">
+	  <result property="imageFileNO" column="imageFileNO" />
+	  <result property="article_num" column="article_num" />
+	  <result property="article_photo" column="article_photo" />
+ </resultMap>
+ 
+ <!--  자주묻는질문 -->
+  <resultMap id = "qnaResult" type="qnaVO">
+ 	<result property="qna_num" column="qna_num"/>
+ 	<result property="qna_title" column ="qna_title"/>
+ 	<result property="qna_content" column ="qna_content"/>
+ 	<result property ="qna_wDate" column = "qna_wDate"/>
+ 	<result property = "mb_id" column = "mb_id"/>
+ </resultMap>
+ 
+ <!-- 공지사항 -->
+ 
+   <resultMap id = "noticeResult" type="noticeVO">
+ 	<result property="notice_num" column="notice_num"/>
+ 	<result property="notice_title" column ="notice_title"/>
+ 	<result property="notice_content" column ="notice_content"/>
+ 	<result property ="notice_wDate" column = "notice_wDate"/>
+ 	<result property = "mb_id" column = "mb_id"/>
+ </resultMap>
+ 
+ 	<resultMap id = "otoResult" type = "otoVO">
+ 		<result property = "oto_num" column = "oto_num"/>
+ 		<result property = "oto_title" column = "oto_title"/>
+ 		<result property = "oto_content" column = "oto_content"/>
+ 		<result property = "oto_wDate" column = "oto_wDate"/>
+ 		<result property = "pos" column="pos"/>
+ 		<result property = "depth" column="depth"/>
+ 		<result property = "oto_parentNO" column="oto_parentNO"/>
+ 		<result property = "mb_id" column = "mb_id"/>
+ 		<result property = "oto_id" column = "oto_id"/>
+ 		<result property = "replyContent" column = "replyContent"/>
+ 		<result property = "answerornot" column = "answerornot"/>
+ 	</resultMap>
+ 
+ 
+ 
+ <!--  
+  <select id="selectAllArticlesList" resultMap="articlesResult"   >
+    <![CDATA[
+    
+       select article_num, CASE WHEN level > 0 then 
+       concat(concat(repeat('    ', level),'┗', ' '), article_title) else article_title 
+       end as article_title, mb_id, article_wDate from mb_board_tbl order by originNO desc, parentNO asc;
+       
+    ]]>
+  </select>
+-->
+<!--<select id="selectAllArticlesList" resultMap="articlesResult"   >
+    <![CDATA[
+      SELECT fnc.level, tb.article_num, tb.parentNO, CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level  - 1),'┗', ' '), tb.article_title)
+                 ELSE tb.article_title
+           END AS article_title, article_content,article_photo, article_wDate, tb.mb_id
+
+  		FROM
+     		(SELECT fnc_boardorder() AS article_num, @level AS level
+        FROM (SELECT @start_with:=0, @article_num:=@start_with, @level:=0) vars
+         JOIN mb_board_tbl
+         WHERE @article_num IS NOT NULL) fnc
+  		 JOIN mb_board_tbl tb ON fnc.article_num = tb.article_num;
+    ]]>
+  </select>
+  -->
+ 
+
+
+
+<select id="selectAllArticlesList" resultMap="articlesResult"   >
+    <![CDATA[
+    
+select  mb.article_num,mb_id,article_title,article_content,article_wDate,img.article_photo, replyContent
+	from mb_board_tbl mb, t_imagefile img where mb.article_num = img.article_num group by article_num order by pos asc; 
+    ]]>
+  </select>
+  
+    <!-- select  mb.article_num,mb_id,article_title,article_content,article_wDate,img.article_photo
+	from mb_board_tbl mb, t_imagefile img where mb.article_num = img.article_num group by article_num order by pos asc;  -->
+  
+  
+	<!--단일이미지 추가  -->
+	 
+ <insert id="insertNewArticle"  parameterType="java.util.Map">
+  
+		<![CDATA[
+			update mb_board_tbl set pos = pos +1;
+		
+			INSERT into mb_board_tbl(article_num, mb_id ,article_title, article_content,article_photo,parentNO,pos,depth)
+			VALUES(#{article_num}, #{mb_id}, #{article_title}, #{article_content}, null,article_num,0,0);
+			
+		]]>      
+	</insert>
+	
+ <!-- update mb_board_tbl set parentNO = article_num;  --> 
+	
+	
+		<insert id="insertNewImage"  parameterType="java.util.Map">
+	  INSERT INTO t_imageFile(imageFileNO, article_photo, article_num, regDate) VALUES
+    <foreach item="item"  collection="list" index="index" separator=",">
+      (#{item.imageFileNO}, #{item.article_photo}, #{item.article_num}, sysdate())
+    </foreach>
+  </insert>
+	
+	<!-- 답글달기 연습 -->
+	<!-- 답글달기 연습 -->
+	<insert id="insertNewReply"  parameterType="java.util.Map">
+		<![CDATA[
+			update mb_board_tbl set pos = pos +1;
+			
+			update mb_board_tbl set pos = pos + 1 where pos > (select pos from(select pos from mb_board_tbl where parentNO=#{parentNO})tmp);
+			
+			insert into mb_board_tbl(article_num , mb_id , article_title, article_content, article_wDate, depth, pos, parentNO)
+			values (#{article_num},#{mb_id},#{article_title} ,#{article_content},sysdate(),0+1,(select pos from(select pos from mb_board_tbl where parentNO =#{parentNO})tmp1)+1,#{parentNO});
+			 
+		]]>      
+	</insert>
+	
+	
+  <select id="selectNewArticle_num" resultType="int"  >
+		<![CDATA[
+			SELECT IFNULL(max(article_num), 0)+1 from t_imagefile; 
+		]]>
+	</select> 
+	
+  <select id="selectArticle" resultType="articleVO"   parameterType="int">
+    <![CDATA[
+    
+      SELECT * from mb_board_tbl
+      where article_num = #{article_num}		
+    ]]>
+  </select>
+  
+  <update id="updateArticle"  parameterType="java.util.Map">
+			update mb_board_tbl
+			set article_title=#{article_title},	 
+			article_content=#{article_content}
+			 <if test="article_photo!='' and article_photo!=null">
+			  , article_photo=#{article_photo}
+			</if>
+			where article_num=#{article_num}
+	</update>
+	
+	<update id="updateadminArticle"  parameterType="java.util.Map">
+	
+	<![CDATA[
+			update mb_board_tbl
+			set article_title='관리자로 인해 삭제된 글입니다.',	 
+			article_content='이 게시글은 관리자로 인해 삭제 되었습니다.'
+			where article_num=#{article_num};
+			
+			update t_imagefile 
+			set article_photo=null
+			where article_num=#{article_num};
+			
+			
+			]]>
+	</update>
+	
+	<delete id="deleteArticle"  parameterType="int">
+    <![CDATA[
+    
+      delete from t_imagefile
+      where article_num = #{article_num};
+      
+      delete from mb_board_tbl
+      where article_num = #{article_num};
+    ]]>      
+  </delete>
+
+ <!--다중 이미지 추가 SQL문 -->   
+
+ 
+ 	<select id="selectNewImageFileNO" resultType="int"  >
+    <![CDATA[
+      SELECT IFNULL(max(imageFileNO),0) from t_imageFile
+    ]]>
+  </select>
+	
+
+  <select  id="selectImageFileList" resultMap="imgResult" parameterType="int">
+    <![CDATA[
+      SELECT * from t_imageFile
+      where article_num=#{article_num}	
+    ]]>
+  </select> 
+  
+  
+  
+  
+  
+    <!-- 자주묻는질문 리스트 -->
+ <select id = "selectAllQnaList" resultMap="qnaResult" >
+ 	<![CDATA[
+ 	select * from qna_board_tbl;
+ 		]]>
+ </select>
+ 
+ 
+ <!--  자주묻는질문 작성 -->
+  <insert id="insertNewQnaArticle"  parameterType="java.util.Map">
+	<![CDATA[
+			INSERT into qna_board_tbl(qna_num,qna_title, qna_content, mb_id)
+			VALUES(#{qna_num},#{qna_title}, #{qna_content},#{mb_id});
+		]]>      
+	</insert> 
+  
+  <!--자주묻는질문 추가-->
+  <select id="selectNewQnaArticle_num" resultType="int"  >
+	<![CDATA[
+		SELECT IFNULL(max(qna_num), 0)+1 from qna_board_tbl; 
+	]]>
+</select>
+
+<!-- 자주묻는질문 조회 -->
+<select id="selectQnaArticle" resultType="qnaVO"   parameterType="int">
+    <![CDATA[
+      SELECT * from qna_board_tbl
+      where qna_num = #{qna_num}		
+    ]]>
+  </select> 
+
+<!-- 자주묻는질문 삭제 -->
+<delete id="deleteQnaArticle"  parameterType="int">
+    <![CDATA[
+      delete from qna_board_tbl
+      where qna_num = #{qna_num};
+    ]]>      
+</delete>
+
+<!--  자주묻는질문 수정 -->
+
+  <update id="updateQnaArticle"  parameterType="java.util.Map">
+ 			update qna_board_tbl
+			set qna_title=#{qna_title},	 
+			qna_content=#{qna_content}
+			where qna_num=#{qna_num}
+  </update>
+  
+  
+  
+  <!--  공지사항 리스트 -->
+   <select id = "selectAllNoticeList" resultMap="noticeResult" >
+ 	<![CDATA[
+ 	select * from notice_tbl order by notice_num desc;
+ 		]]>
+ </select>
+ 
+ <!--  공지사항 글쓰기 -->
+ 
+   <insert id="insertNewNoticeArticle"  parameterType="java.util.Map">
+	<![CDATA[
+			INSERT into notice_tbl(notice_num,notice_title, notice_content, notice_wDate, mb_id)
+			VALUES(#{notice_num},#{notice_title}, #{notice_content},sysdate(), #{mb_id});
+		]]>      
+	</insert> 
+	<!--  공지사항 글 번호 -->
+	  <select id="selectNewNoticeArticle_num" resultType="int"  >
+	<![CDATA[
+		SELECT IFNULL(max(notice_num), 0)+1 from notice_tbl; 
+	]]>
+</select>
+
+<!--  공지사항 상세 -->
+<select id="selectNoticeArticle" resultType="noticeVO"   parameterType="int">
+    <![CDATA[
+      SELECT * from notice_tbl
+      where notice_num = #{notice_num}		
+    ]]>
+  </select> 
+  
+  
+  <!-- 공지사항 삭제 -->
+<delete id="deleteNoticeArticle"  parameterType="int">
+    <![CDATA[
+      delete from notice_tbl
+      where notice_num = #{notice_num};
+    ]]>      
+</delete>
+
+  <update id="updateNoticeArticle"  parameterType="java.util.Map">
+ 			update notice_tbl
+			set notice_title=#{notice_title},	 
+			notice_content=#{notice_content}
+			where notice_num=#{notice_num}
+  </update>
+  
+  
+   
+   
+   <select id = "selectAllOtoList" resultMap="otoResult" >
+ 	<![CDATA[
+ 		select * from oto_tbl where mb_id = oto_id  order by pos asc;
+ 		]]>
+ </select>
+ 
+  <insert id="insertNewOtoArticle"  parameterType="java.util.Map">
+  
+		<![CDATA[
+			update oto_tbl set pos = pos +1;
+		
+			INSERT into oto_tbl(oto_num, mb_id, oto_id ,oto_title, oto_content,oto_parentNO,pos,depth,oto_wDate,answerornot)
+			VALUES(#{oto_num}, #{mb_id}, #{mb_id}, #{oto_title}, #{oto_content},oto_num,0,0,sysdate(),0);
+			
+		]]>      
+	</insert>
+	
+	  <select id="selectNewOtoArticle_num" resultType="int"  >
+		<![CDATA[
+			SELECT IFNULL(max(oto_num), 0)+1 from oto_tbl; 
+		]]>
+	</select> 
+	
+	
+	<!-- 1:1문의 조회 -->
+	<select id="selectOtoArticle" resultType="otoVO"   parameterType="int">
+    <![CDATA[
+      SELECT * from oto_tbl
+      where oto_num = #{oto_num}	
+    ]]>
+  </select> 
+  
+  <!--  1:1 문의 삭제 -->
+  <delete id="deleteOtoArticle"  parameterType="int">
+    <![CDATA[
+      delete from oto_tbl
+      where oto_num = #{oto_num}
+      
+    ]]>      
+</delete>
+
+<!--  1:1문의 수정 -->
+  <update id="updateOtoArticle"  parameterType="java.util.Map">
+ 			update oto_tbl
+			set oto_title=#{oto_title},	 
+			oto_content=#{oto_content}
+			where oto_num=#{oto_num};
+  </update>
+  
+    <update id="updateOtoReply"  parameterType="java.util.Map">
+    <![CDATA[
+ 			update oto_tbl
+			set oto_title=#{oto_title},	 
+			oto_content=#{oto_content}
+			where oto_num=#{oto_num};
+			]]> 
+  </update>
+  
+  	<insert id="insertNewOtoReply"  parameterType="java.util.Map">
+		<![CDATA[
+			update oto_tbl set pos = pos +1;
+			
+			update oto_tbl set pos = pos + 1 where pos > (select pos from(select pos from oto_tbl where oto_parentNO=#{oto_parentNO})tmp);
+			
+			insert into oto_tbl(oto_num , mb_id , oto_title, oto_content, oto_wDate, depth, pos, oto_parentNO,oto_id,answerornot)
+			values (#{oto_num},#{mb_id},#{oto_title} ,#{oto_content},sysdate(),0+1,(select pos from(select pos from oto_tbl where oto_parentNO =#{oto_parentNO})tmp1)+1,#{oto_parentNO},#{mb_id},1);
+			
+			update oto_tbl set replyContent=(select oto_content from (select oto_content from oto_tbl where oto_parentNO=#{oto_parentNO} and depth=1)tmp) 
+			where oto_parentNO = #{oto_parentNO} and depth=0;
+			
+			update oto_tbl set answerornot=1 where replyContent is not null;
+			 
+		]]>      
+	</insert>
+	
+
+ 
+  
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product">
+<!-- 리절트 맵 정의 -->	
+
+<resultMap id="goodsResult" type="productVO">
+		<result property="pd_id" column="pd_id" />
+		<result property="pd_name" column="pd_name" />
+		<result property="pd_code" column="pd_code" />
+		
+		<result property="pd_price" column="pd_price" />
+		<result property="pd_inCount" column="pd_inCount" />
+		<result property="pd_stock" column="pd_stock" />
+		
+		<result property="pd_level" column="pd_level" />
+		<result property="pd_group1" column="pd_group1" />
+		<result property="pd_group2" column="pd_group2" />
+		
+		<result property="pd_status" column="pd_status" />
+		<result property="pd_event" column="pd_event" />
+		<result property="pd_likethis" column="pd_likethis" />
+		
+		<result property="pd_inDate" column="pd_inDate" />
+		<result property="pd_limitDate" column="pd_limitDate" />
+		<result property="pd_content" column="pd_content" />
+		<result property="sort" column="sort" />
+	
+		<result property="pd_fileName" column="fileName" />
+		<!-- 이벤트 설정을 위한 추가 컬럼 등록 -->
+		<result property="event" column="event" />
+	</resultMap>	
+
+	<resultMap id="imageResult" type="ImageFileVO">
+	   <result property="image_num" column="image_num" />
+	   <result property="fileName" column="fileName" />
+	   <result property="fileType" column="fileType" />
+	   <result property="pd_id" column="pd_id" />
+	   <result property="pd_name" column="pd_name" />
+	   
+	  
+	</resultMap>
+	
+	
+	
+	
+	  <select id="selectGoodsList" parameterType="String" resultMap="goodsResult"   >
+        <![CDATA[
+         select @ROWNUM:=@ROWNUM+1 ,t.*
+          from(
+         select g.*,d.fileName from product_tbl g, product_d_image d
+           where g.pd_id=d.pd_id 
+           and d.fileType='main_image'
+            and pd_status=#{pdStatus}
+            order by g.pd_inDate desc) t
+                where (@ROWNUM:=0) < 16
+	    ]]>
+	</select>
+	
+
+
+	<select id="selectMWPdList" parameterType="String" resultMap="goodsResult">
+	  <![CDATA[
+	  		select @ROWNUM:=@ROWNUM+1 ,t.*
+	  		from(
+	  		select p.*, d.fileName from product_tbl p, product_d_image d
+	  		where p.pd_id = d.pd_id
+	  		and pd_group1 = #{pd_group1}
+	  		and d.fileType='main_image') t where (@ROWNUM:=0) < 16;
+	  
+	  
+	  
+	   ]]>
+	 	
+	</select>
+	
+	
+	<select id="selectWPdList" parameterType="String" resultMap="goodsResult">
+	  <![CDATA[
+	  		select @ROWNUM:=@ROWNUM+1 ,t.*
+	  		from(
+	  		select p.*, d.fileName from product_tbl p, product_d_image d
+	  		where p.pd_id = d.pd_id
+	  		and pd_group1 = #{pd_group1}
+	  		and d.fileType='main_image') t where (@ROWNUM:=0) < 16;
+	  
+	  
+	  
+	   ]]>
+	 	
+	</select> 
+	
+	
+	<select id="selectPdList" parameterType="String" resultMap="goodsResult">
+	  <![CDATA[
+	  		select @ROWNUM:=@ROWNUM+1 ,t.*
+	  		from(
+	  		select p.*, d.fileName from product_tbl p, product_d_image d
+	  		where p.pd_id = d.pd_id
+	  		and d.fileType='main_image' 
+	  		 ]]>
+	  		
+	  		<choose>
+	  		
+	  		 <when test = 'pd_group1 == "man"'>
+	  		    and pd_group1 = 'man'
+	  		 </when>
+	  		 
+	  		 <when test = 'pd_group1 == "woman"'>
+	  		 	and pd_group1 = 'woman'
+	  		 </when>
+	  		 </choose>
+	  		 
+	  		
+	  		<choose>
+	  		 <when test = 'pd_group2 == "가성비"'>
+	  		    and pd_group2 = '가성비'
+	  		 </when>
+	  		 
+	  		 <when test = 'pd_group2 == "PRIMIUM"'>
+	  		 	and pd_group2 = 'PRIMIUM'
+	  		 </when>
+	  		
+	  		</choose>
+	  		
+	  		
+	  		
+	  		<![CDATA[
+	  		) t where (@ROWNUM:=0) < 16
+	  		
+	  		]]>
+	  		
+	  		<choose>
+	  			
+	  			<when test = 'sort == "new_thing"'>
+	  				order by pd_inDate desc
+	  			</when>
+	  			
+	  			<when test = 'sort == "price_high"'>
+	  				order by pd_price desc
+	  			</when>
+	  			
+	  			<when test = 'sort == "price_low"'>
+	  				order by pd_price asc
+	  			</when>
+	  			<otherwise>
+	  				pd_inDate asc
+	  			</otherwise>
+	  		
+	  		</choose>
+	
+	   
+	</select>
+	
+	
+	<select id="selectPdDetail" resultMap="goodsResult"   parameterType="String"  >
+	    <![CDATA[
+		     select g.*,d.fileName from product_tbl g, product_d_image d
+	        where g.pd_id=d.pd_id
+	        and d.fileType='main_image'
+	        and g.pd_id=#{pd_id}
+	        order by g.pd_id;
+    	]]>
+	</select>
+	<select id="selectPdDetailImage" resultMap="imageResult"   parameterType="String"  >
+	    <![CDATA[
+		    	select * from  product_d_image 
+		    	where fileType !='main_image'
+				and pd_id=#{pd_id};
+    	]]>
+	</select>
+	
+	
+	
+   <select id="selectGoodsBySearchWord" resultMap="goodsResult"   parameterType="String"  >
+     <![CDATA[
+				select g.*,d.fileName from product_tbl g, product_d_image d
+		    where g.pd_id=d.pd_id
+		    and d.filetype='main_image'
+		    and g.pd_name like concat('%', #{searchWord}, '%')
+		    
+		    
+		]]>
+	</select>	
+	
+	<select id="selectKeywordSearch" resultType="String"   parameterType="String"  >
+	    <![CDATA[
+        select pd_name from product_tbl 
+        where         
+        pd_name like concat('%', #{keyword}, '%')
+        
+		]]>
+	</select>
+	
+	
+		<select id="productPriceSort" resultType="String"   parameterType="String"  >
+	    <![CDATA[
+		 select * from product_tbl order by pd_price desc;
+		]]>
+	</select>
+	
+	
+	
+	
+	
+	</mapper>

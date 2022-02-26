@@ -1,0 +1,1010 @@
+/* 怨듯넻 */
+* {
+    font-family: 'Noto Serif KR', serif;
+    font-size:15px;       /* 湲곕낯 15px */
+    margin:0px;
+    padding:0px;
+}
+
+html,body {
+    height: 100%;
+    margin:0px;
+    padding:0px;
+    min-height: 100%;
+}
+
+.body-area1 {
+    margin:auto;
+    width: 1400px;
+    height: 1200px;
+}
+
+.body-area2 {
+    margin:auto;
+    width:1200px;
+}
+
+
+/*移댄듃 �럹�씠吏� �룺 �꽕�젙�쓣 �쐞�븳 css*/
+.cart_body {
+	margin-left:100px;
+	margin-right:100px;
+	width:1200px;
+}
+
+.cart_body2 {
+	margin-left: 100px;
+	margin-right: 100px;
+	width: 1200px;
+}
+/*移댄듃 �럹�씠吏� �룺 �꽕�젙�쓣 �쐞�븳 css �걹*/
+
+
+.header_line {
+    background-color: black;
+    width: 1902px;
+    height: 380px;
+}
+
+
+.header_line {
+    background-color: black;
+    width: 1902px;
+    height: 380px;
+}
+
+select {text-align: center; font-weight: bold;}
+
+a { text-decoration: none; color:black;}
+
+li {list-style:none;}
+
+
+button {font-weight: bold;}
+
+.button0 {
+    border-radius: 10px;
+    width:1000px;
+    height: 70px;
+    background-color:#22262a;
+    color:white;
+}
+
+.button1 {
+    border-radius: 10px;
+    width:350px;
+    height: 50px;
+    background-color:#22262a;
+    color:white;
+}
+
+.button2 {
+    border-radius: 8px;
+    width:180px;
+    height:40px;
+    background-color:#22262a;
+    color:white;
+}
+
+.button3 {
+  border-radius:8px;
+  width:100px;
+  height:40px;
+  background-color:#22262a;
+  color:white;
+}
+
+.button4 {
+    border-radius: 10px;
+    width:70px;
+    height:30px;
+    background-color:#22262a;
+    color:white;
+}
+
+.btn-outline {
+    border:1px solid black;
+    border-radius: 5px;
+    padding:0.3%;
+    color:black;
+    border-color:black;
+    display:inline-block;
+}
+
+.btn-outline:hover {
+    background-color: #22262a;
+    color:white;
+    font-weight: bold;
+}
+
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+table {border-collapse: collapse;}
+
+td,th {border:1px solid black;}
+
+.pagenation {margin:auto; text-align: center;}
+
+.pagenation a {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    cursor: pointer;
+    
+  }
+
+/* 怨듯넻 �걹 */
+
+
+/* header 諛� nav 遺�遺� */
+
+
+/* 愿묎퀬諛� */
+.advertisement-bar {
+    height:30px;
+    background-color: rgb(211, 211, 211);
+    text-align: center;
+    border:1px solid black;
+}
+/* 愿묎퀬諛� �걹 */
+
+
+.header_section_all {width:100%; height: 60px;}
+
+.header_section {
+    margin:0 auto;
+    height: 60px;
+    width:1600px;
+}
+
+.event_side {width:50%; float:left;}
+
+.login_side {text-align:right;}
+
+.login_side ul{position: absolute; display: block;}
+
+.login_side li {
+    font-weight: bold;
+    display: inline-block;
+    line-height: 60px;
+    padding:0 18px;
+}
+
+
+.main_search input {width:100px;}
+.main_search i {margin-left:10px; font-size:20px;}
+
+/* 硫붾돱 */
+.navbar {
+    width:100%;
+    border-top:2px solid gray;
+    border-bottom:2px solid gray;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar__logo {width:400px;}
+
+.navbar__logo img {
+    margin-left:100px;
+    width:200px;
+    height: 60px;
+}
+
+.navbar__menu {
+	list-style: none; z-index:1;
+}
+
+.navbar__menu > li {
+    font-weight: bold;
+    margin-left:30px;
+    float:left;
+    width:150px;
+    text-align: center;
+    height:70px;
+}
+
+.navbar__menu > li >a {line-height: 70px;}
+
+/* 留ㅻ돱 �렯移섍린 */
+
+.navbar__menu li > ul {
+    display:none;
+    position:absolute;
+    border:1px solid gray;
+    border-radius: 4px; 
+    background-color: white;
+    top:164px;
+    width:150px;
+}
+
+.navbar__menu li > ul > li {text-align: center; margin-bottom:30px;}
+
+
+.navbar__menu li > ul > li {margin-top:10px;}
+.navbar__menu li:hover > ul {display:block;}
+
+
+/* 硫붾돱 �렯移섍린 �걹 */
+
+
+/* �젅�씠�븘�썐 諛섏쓳�삎 */
+
+.navbar__toogleBtn {
+    display:none;
+    position:absolute;
+    top:120px;
+    right:32px;
+    font-size: 24px;
+    color:gray;
+}
+
+@media screen and (max-width:868px) {
+    .navbar__logo {
+        width:100%;
+        margin-left:-30px;
+        text-align: center;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navbar__menu {
+        display:none;
+        flex-direction: column;
+        align-items:center;
+        width:100%;
+    }
+
+    .navbar__menu li {
+        width:100%;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .navbar__menu li:hover {background-color:rgb(224, 220, 220);}
+
+    .navbar__toogleBtn {display:block;}
+
+    .navbar__menu.active{display:flex;}
+
+    
+}
+
+/* �젅�씠�븘�썐 諛섏쓳�삎 �걹 */
+
+
+/* 而⑦뀗痢� (�떎吏덉쟻 諛붾뵒遺�遺�) */
+
+.contents_title {font-size:30px; font-weight:bold; text-align: center; margin:30px 0px 30px 0px;}
+.contents_title hr { margin:auto; width:50%;}
+
+/* 留덉씠�럹�씠吏� */
+
+/* �궗�씠�뱶 諛� */
+input[id="menuicon"] {display:none;}
+input[id="menuicon"] + ul {display:block;position:fixed;left:0;top:50%;transform:translateY(-50%);transition:all .35s;text-align:right;}
+input[id="menuicon"] + ul > li {display:block;width:50px;height:50px;border:1px solid #f1f1f1;position:relative;margin-top:-1px;}
+input[id="menuicon"] + ul > li > a {display:block;width:auto;height:50px;overflow:hidden;transition:all .35s;}
+input[id="menuicon"] + ul > li > label {display:block;cursor:pointer;width:auto;height:50px;background:#dadada;}
+input[id="menuicon"] + ul > li:nth-child(1) label span {display:block;position:absolute;width:50%;height:3px;border-radius:30px;background:#333;transition:all .35s;}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(1) {top:30%;left:50%;transform:translateX(-50%);}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(2) {top:50%;left:50%;transform:translate(-50%,-50%);}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(3) {bottom:30%;left:50%;transform:translateX(-50%);}
+input[id="menuicon"]:checked + ul {z-index:2;left:300px;}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label {z-index:2;left:300px;}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(2) {opacity:0;}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(3) {bottom:50%;left:50%;transform:translate(-50%,50%) rotate(-45deg);}
+div[class="sidebar"] {width:300px;height:100%;background-color:white;position:fixed;top:0;left:-300px;z-index:1;transition:all .35s; border:1px solid darkgray;}
+input[id="menuicon"]:checked + ul + div {left:0;}
+
+.side_bar-menu a {
+  font-size:20px;
+  color:rgb(33,37,41);
+  font-weight: bolder;
+}
+
+.side_bar-menu a:hover {
+  background-color:rgb(33,37,41);;
+  color:white;
+}
+
+.side_bar-menu {text-align: center; margin-bottom: 15px;}
+
+.sidebar i {font-size: 30px;}
+
+/* �궗�씠�뱶 諛� �걹 */
+
+/* 留덉씠�럹�씠吏� */
+
+#li_mypage {text-align:center; }
+
+#li_mypage a {margin-top:30px; margin-bottom:10px; font-size:25px;} 
+
+
+
+
+
+.table_top_text {
+    margin:auto; 
+    margin-top:100px; 
+    width:1000px;
+    font-size:25px;
+    font-weight: bold;
+}
+
+.table_top_text_a {float:right; font-size:20px;}
+
+#order {font-size:25px; font-weight: bold;}
+
+#plus a {font-size:20px; font-weight: bold; }
+
+.first_table { margin:auto;}
+
+.first_table th {width:1000px; background-color: #22262a; color:white;}
+
+.first_table td {height: 100px; text-align: center;}
+
+.second_table { margin:auto;}
+
+.second_table th { width:200px;  background-color: #22262a; color:white; }
+
+.second_table td {text-align: center;}
+
+.third_table { margin:auto;}
+
+.third_table th { width:250px;  background-color: #22262a; color:white; }
+
+.third_table td {text-align: center;}
+
+/* 정승원 220216 회원정보 수정 페이지 */
+
+.ps_box.updateID {
+  
+  margin-right: 115px;
+}
+
+.box_button_pw {
+  margin-left: 115px;
+}
+
+.box_buttion_email {
+  margin-left: 115px;
+
+}
+
+.box_button_other_address {
+  margin-left: 115px;
+}
+
+/* 정승원 220216 회원정보 수정 페이지 끝 */
+
+
+/* �쉶�썝�젙蹂� �닔�젙 �걹*/
+
+/* 留덉씠�럹�씠吏� �걹 */
+
+
+/* �쉶�썝媛��엯 �뤌 */
+.join_form {text-align: center;}
+
+.join_row {
+  margin-bottom: 10px;
+  
+
+}
+
+.join_form span {margin:auto; margin-bottom: 10px; display:inline-block;}
+
+.join_content button { margin-left:10px;}
+
+.join_row h3 {
+    margin:auto;
+    width:39%;
+    text-align: left;
+}
+
+.ps_box {
+    display: block;
+    position: relative;
+    width: 470px;;
+    height: 51px;
+    border: solid 2px #dadada;
+    padding: 12px 20px 10px 14px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.join_row input {border:0px; text-align: center; width:340px; height: 25px;}
+
+.CA {margin-left:115px;}
+
+.join_row select {width:450px; border:0px;}
+
+#phonenumber1,#phonenumber2,#phonenumber3 {width:40px; margin-right:10px; margin-left:10px;}
+
+/* �쉶�썝媛��엯 �뤌 �걹 */
+
+/* 濡쒓렇�씤 �뤌 */
+.login_contents{margin:auto;}
+
+.login_contents h3 {margin: auto; width:350px;}
+
+.login_contents .ps_box {margin:auto; width:350px}
+
+.login_contents input {border:0px;}
+
+.idpw-find {width:350px; text-align:right; margin:auto;}
+
+.idpw-find a:hover {font-weight: bolder; font-size:16px;}
+
+.idpw-find span {margin-right:110px;}
+
+.login_contents-button {text-align: center; margin-top:10px;}
+
+
+/* 濡쒓렇�씤 �뤌 �걹 */
+
+/* �븘�씠�뵒, 鍮꾨�踰덊샇 李얘린 */
+
+.idpw-find-form {
+    height: 600px;
+    text-align: center;
+    margin-top:35px;
+   }
+   
+/* label占쎈퓠 占쏙옙占쎈립 甕곌쑵�뱣占쎈꺗占쎄쉐 */
+.tab_content input[type="radio"] {display:none;} /*input �닲源�泥섎━ */
+.tab_content input[type="radio"] + label {
+  display:inline-block;
+  border:2px solid gray;
+  border-radius:8px;
+  width:200px;
+  padding:20px;
+  color:#999;
+  font-size:14px;
+  font-weight: bold;
+  cursor:pointer; 
+} 
+
+.tab_content input[type="radio"]:checked + label {
+    color:#22262a; 
+    border-top:3px solid #22262a; 
+    border-bottom:3px solid #22262a;
+    margin-bottom:10px;
+}
+
+.conbox {
+  width:600px;
+  height:300px;
+  margin:auto;
+  display:none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px;
+}
+
+.conbox p {font-size:25px; font-weight: bold;}
+
+.conbox button {margin-top:20px;}
+
+.con1 {
+  border:3px solid gray;
+  text-align:center;
+  padding-top:50px;
+}
+
+.con1 input {
+  width:300px;
+  height:40px;
+  margin-top:10px;
+}
+
+.con2 {
+  border:3px solid gray;
+  text-align:center;
+  padding-top:50px;
+}
+
+.con2 input {
+  width:300px;
+  height:40px;
+  margin-top:10px;
+}
+.con2_phone > input {width:90px; text-align: center;}
+
+
+input[id="tab01"]:checked ~ .con1 {display:block;} /* input�뿉 泥댄겕媛� �빐�떦�슂�냼 蹂댁씠寃� �꽕�젙 */
+input[id="tab02"]:checked ~ .con2 {display:block;}
+input[id="tab03"]:checked ~ .con3 {display:block;}
+
+/* �븘�씠�뵒, 鍮꾨�踰덊샇 李얘린 �걹 */
+
+
+/* �븘�씠�뵒, 鍮꾨�踰덊샇 李얘린 寃곌낵李� */
+
+.result_table {margin:auto;}
+
+.result_table th {
+  background-color: #22262a;
+  width:200px;
+  color:white;
+}
+
+.result_table td {
+  width:400px;
+  height: 100px;
+  text-align: center;
+}
+
+.id_result_button{
+  margin-top:10px;
+  margin-left:250px;
+}
+
+.password-find {
+  margin-bottom: 100px;
+  WIDTH: 50pt;
+  HEIGHT: 30pt;
+}
+
+
+/* �븘�씠�뵒, 鍮꾨�踰덊샇 李얘린 寃곌낵李� �걹 */
+
+
+/* 二쇰Ц�꽌 */
+
+.user_info {
+  margin-left:100px;
+  margin-top:30px;
+}
+
+.user_info th {
+  width:150px;
+  background-color: var(--bs-gray-200);
+}
+
+.user_info input {
+  margin-top:5px;
+  margin-bottom: 5px;
+  margin-left:10px;
+}
+
+#phone {
+  width:100px;
+}
+
+#add_2,#add_3 {
+  width:400px;
+  margin-top:10px;
+  margin-bottom: 5px;
+}
+
+#info_message {
+  width:550px;
+  height: 100px;
+}
+
+#user_info-top {
+  margin-bottom: 50px;
+}
+
+#user_info-top td{
+  width:800px;
+}
+
+#user_info-bottom td {
+  width:800px;
+}
+
+#user_info-total1 {
+  margin-top:100px;
+  text-align: center;
+}
+#user_info-total1 th {
+  height: 50px;
+  width:315px;
+}
+
+#user_info-total1 td {
+  font-weight: bold;
+  font-size:25px;
+  height:100px;
+}
+
+#user_info_total2{
+  margin-top:30px;
+}
+
+#user_info_total2 th {
+  width:200px;
+}
+
+#user_info_total2 td {
+  width:745px;
+}
+
+#user_info_total2 p {
+  margin-left:10px;
+}
+
+#payment_card1 {
+  margin-top:30px;
+}
+
+#payment_card2 td  {
+  height: 35px;
+  width:500px;
+}
+
+#payment_card2 select {
+  margin-left:10px;
+}
+
+/* 二쇰Ц�꽌 �걹 */
+
+/* �젣�뭹 �럹�씠吏� */
+
+.Product_Explanation {
+    width:1400px;
+    margin-top:15px;
+    margin:auto;
+    font-weight: bold;
+    font-size:30px;
+  }
+  
+  .area1 {
+    width:1400px;
+    margin:auto;
+    height: 1400px;
+  }
+  
+  .area2 {
+    margin:auto;
+    margin-top:100px;
+    width:1400px;
+    height: 1400px;
+  }
+
+  .area2 i {font-size:25px;}
+  
+  .area3 {margin-top:40px; margin-bottom: 30px;}
+  
+  
+  .prd_box {
+    display:inline-block;
+    width: 300px;
+    height:450px;
+    margin:auto;
+  }
+  
+  
+  .thumb_img  > a > img{width: 280px; height: 300px;}
+  
+  .prd_ul {display:flex; flex-wrap: wrap;}
+  
+  
+  .xans-recode- {
+    margin:auto;
+    float:left;
+    text-align: center;
+    margin-left:40px;
+  }
+  
+  .page_wrap {text-align:center;font-size:30px;}
+  
+   .icon_cart {
+     margin-top:25px;
+     width: 300px;
+     height:50px;
+     float:left;
+   }
+  
+   .icon_cart > a {font-size:30px; color:black;}
+
+   .prd_search {text-align: right;}
+
+   .prd_search hr {margin-bottom: 10px; margin-top:10px;}
+
+   .category_button { /* ALL, �넂��媛�寃⑹닚, �궙��媛�寃⑹닚, �벑�벑 踰꾪듉 */
+    width:1400px;
+    margin:auto;
+   }
+
+   .category_button hr {margin-top:15px;}
+
+   .category_button a {
+       border:1px solid #22262a;
+       border-radius: 10px;
+       padding:2px 10px 2px 10px;
+       margin-right:30px;
+   }
+
+   .category_button a:hover {
+       background-color: #22262a;
+       color:white;
+   }
+
+
+/* �젣�뭹 �럹�씠吏� �걹 */
+
+
+
+/* main 異붽�? */
+
+.py-5 {
+  text-align: center;
+  width: 1400px;
+  margin:auto;
+  
+
+}
+
+.py-5-1 {
+  text-align: center;
+  width: 1400px;
+  margin:auto;
+  
+	
+}
+
+.perfume {
+  margin:auto;
+  width:350px;
+  float:left;
+  margin-bottom: 50px;
+  margin-top:50px;
+  font-size: 50px;
+}
+
+.morePerfume {
+  margin:auto;
+  width:350px;
+  float:left;
+  margin-bottom: 50px;
+  margin-top:50px;
+  font-size: 50px;
+	
+}
+
+.pagenation-main-page {
+  clear:left;
+  margin-bottom:50px;
+}
+
+/* main �걹 */
+
+
+/* mypage �닔�젙 */
+.member-button {
+	border: 3px solid black;
+ 	width: 1000px;
+ 	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border : 3px solid skyblue;
+}   
+/* mypage �닔�젙 �걹 */  
+
+
+
+.third_table {
+  	margin-bottom: 100px;
+}
+
+
+/* USER BEST !! */
+
+.user_best_prd-row1 {
+    float:left;
+    margin:auto;
+    text-align: center;
+    width:1200px;
+    height:600px;
+  }
+  
+  .user_best_prd_ul {
+    margin:auto;
+    margin-top:30px;
+    width: 1200px;
+    height: 500px;
+  }
+  
+  .user_best_text {
+    margin:auto;
+    margin-top:30px;
+    width:1200px;
+    font-size:30px;
+    font-weight: bolder;
+  }
+  
+  .user_best_prd-box-li1 {
+    float:left;
+    height: 480px;
+    margin-left:60px;
+    text-align: center;
+  }
+  
+  .best-prd-box {display:inline-block; height: 450px;}
+  
+  .user_best-prd-thumb img {
+    border:2px solid var(--bs-gray-dark);
+    border-radius: 70px;
+    width:320px;
+    height: 350px;
+  }
+  
+  .box-table {margin:auto; margin-top:10px;}
+  
+  .contents_table {margin:auto;}
+  
+  .contents_table th {
+    text-align: center;
+    background-color: var(--bs-gray-300);
+    color:black;
+    width:70px;
+  }
+  
+  .contents_table td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    max-width: 230px;
+  }
+  
+  .contents_table a {color:black;}
+  
+  .momeche_best-title {
+    margin:auto;
+    margin-top:10px;
+    text-align: center;
+    display: block;
+    word-break:break-all;
+    font-weight: bold;
+    width:320px;
+  }
+  
+  .momeche_best-title > a {color:black;}
+
+/* USER BEST !! �걹 */
+
+/* �씠踰ㅽ듃 */
+.event_contents-area {
+  margin:auto;
+  margin-top:50px;
+  width:1200px;
+}
+
+.event_contents-ul {
+  margin:auto;
+  margin-top:30px;
+  width:1200px;
+  height: 900px;
+}
+.event_contents-ul img {
+  margin-left:25px;
+  margin-bottom:50px;
+  border:2px solid gray;
+  border-radius: 70px;
+  width:360px;
+  height:330px;
+}
+/* �씠踰ㅽ듃 �걹 */
+
+/* footer CSS */
+.footer1{
+    bottom:0;
+    color:white;
+    width:100%;
+    height:300px;
+    background-color:#22262a;
+}
+
+.footer1 div {float:left;}
+
+.footer_link {
+    width:100%;
+    height: 40px;
+    background-color: rgb(209, 208, 208);
+    color:black;
+}
+
+.footer_link b {margin-left:30px; line-height: 40px;}
+
+.footer_link a {color:black;}
+
+.footer_link i {margin-left:10px;}
+
+.footer_info {border:1px solid gray; width:400px;}
+
+.footer_info p {font-weight: bold; margin-left:30px;}
+
+.footer_Service {margin-left:800px; text-align: right; width:400px;}
+
+.footer_Service p {font-weight: bold; margin-top:50px;}
+
+/* footer �걹 */
+
+
+/* 湲��벐湲� 李� */
+
+#articleForm-p {text-align: center; font-size:30px; margin-top:30px;}
+.articleForm-table, .frmReply-table {margin-left: auto; margin-right: auto;}
+.articleForm-table th, .frmReply-table th{width:150px; background-color: #22262a; color:white;}
+.articleForm-table td, .frmReply-table td{width:200px;}
+.articleForm-table textarea, .frmReply-table textarea {width: 400px; height: 300px; border: 0px; resize: none;}
+#af_name , #af_title{border:0px;}
+.image-td {padding:10px;}
+#articleForm-content {height: 300px;}
+.subu input {float:right;}
+.subu { padding-top:10px; border:0px;}
+
+
+
+
+/* qna 湲��벐湲� 李� */
+
+.qna_articleForm-table{margin:auto; border:2px solid #22262a;}
+.qna_articleForm-table th{width:100px; height: 50px; background-color:#22262a; color:white;}
+.qna_articleForm-table td{width:500px;}
+.qna_articleForm-table input {width:500px; height:50px; border:solid 0px;}
+.qna_button {margin-top:15px; margin-left:700px;}
+
+
+
+
+/* qna �긽�꽭 */
+
+textarea {resize: none; overflow:hidden; border:0px;}
+
+.qna_viewarticleForm-table{margin:auto; border:2px solid #22262a;}
+.qna_viewarticleForm-table th{width:100px; height: 50px; background-color:#22262a; color:white;}
+.qna_viewarticleForm-table td{width:500px;}
+.qna_viewarticleForm-table input {width:500px; height:50px; border:solid 0px;}
+.qna_viewAtricle_button {margin-left:460px; margin-top:10px; width:614px;}
+.qna_viewAtricle_button button {margin-left:10px;}
+
+
+
+/* one to one.html css */
+
+/* one to one.html �걹 */
+
+
+/* 업체소개(회사소개) */
+
+.all-About-Us-area {
+  width: 1400px;
+  margin: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.About-Us-image-box {
+  width: 595px;
+  height: 600px;
+}
+
+.About-Us-text-box {
+  width: 595px;
+  font-weight:bold;
+  height: 600px;
+  font-size: 20px;
+  margin-left: 600px;
+  margin-top: -600px;
+}
+
+/* 업체소개(회사소개) 끝 */
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.order">
+
+<resultMap id="orderGoodsResult" type="orderVO">	
+		<result property="order_num" column="order_num" />
+		<result property="order_id" column="order_id" />
+		<result property="mb_id" column="mb_id" />
+		<result property="pd_id" column="pd_id" />
+		<result property="pd_name" column="pd_name" />
+		<result property="order_amount" column="order_amount" />
+		<result property="receiver_name" column="receiver_name" />
+		<result property="receiver_tel1" column="receiver_tel1" />
+		<result property="receiver_tel2" column="receiver_tel2" />
+		<result property="receiver_tel3" column="receiver_tel3" />
+		<result property="receiver_zipcode" column="receiver_zipcode" />
+		<result property="receiver_road_address" column="receiver_road_address" />
+		<result property="receiver_jibun_address" column="receiver_jibun_address" />
+		<result property="receiver_other_address" column="receiver_other_address" />
+		<result property="order_date" column="order_date" />
+		<result property="order_state" column="order_state" />
+		
+		<result property="goods_fileName" column="goods_fileName" />
+		
+
+</resultMap>
+
+
+	<select id="selectMyOrder" resultMap="orderGoodsResult"  parameterType="orderVO"  >
+	    <![CDATA[
+			select * from order_tbl 
+			where mb_id=#{mb_id}
+        	order by pay_order_time desc
+		]]>
+	</select>	
+	
+
+   <!--  <select id="selectMyOrderList" resultMap="orderGoodsResult"  parameterType="orderVO"  >
+	    <![CDATA[
+			elect * from order_tbl 
+			where date_format(pay_order_time,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') 
+        	and mb_id=#{mb_id}
+        	order by pay_order_time desc
+		]]>
+	</select> -->
+
+	<insert id="insertOrderList" parameterType="java.util.Map">
+		insert into order_tbl(order_id, mb_id, pd_id, pd_name, 
+		    order_amount, receiver_name, 
+		    receiver_tel_1, receiver_tel_2, receiver_tel_3, 
+		    receiver_zipcode, receiver_road_address, receiver_jibun_address,
+		    receiver_other_address, order_date, order_state ) values
+
+		    (#{order_id}, #{mb_id}, #{pd_id}, #{pd_name}, 
+		    #{order_amount}, #{receiver_name}, 
+		    #{receiver_tel_1}, #{receiver_tel_2}, #{receiver_tel_3},
+		    #{receiver_zipcode}, #{receiver_road_address}, 
+		    #{receiver_jibun_address}, #{receiver_other_address},
+		    #{order_date}, #{order_state}); 
+		
+	</insert>
+
+
+	<!-- 장바구니 수량 조회 쿼리 -->
+	<select id="cartCount" resultType="java.lang.Integer" parameterType="CartVO">
+
+			select cart_count from cart_tbl where mb_id = #{mb_id} and pd_id = #{pd_id};
+
+	</select>
+
+	
+</mapper>

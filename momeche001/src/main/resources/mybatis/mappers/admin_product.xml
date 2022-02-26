@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin.product">
+<!-- 리절트 맵 정의 -->	
+	<resultMap id="productResult" type="productVO">
+	
+	    <result property="pd_id" column="pd_id" />
+		<result property="pd_name" column="pd_name" />
+		<result property="pd_code" column="pd_code" />
+		<result property="pd_price" column="pd_price" />
+		<result property="pd_inCount" column="pd_inCount" />
+		
+		<result property="pd_stock" column="pd_stock" />
+		<result property="pd_level" column="pd_level" />
+		<result property="pd_group1" column="pd_group1" />
+		<result property="pd_group2" column="pd_group2" />
+		<result property="pd_status" column="pd_status" />
+		
+		<result property="pd_event" column="pd_event" />
+		<result property="pd_likethis" column="pd_likethis" />
+		<result property="pd_inDate" column="pd_inDate" />
+		<result property="pd_limitDate" column="pd_limitDate" />
+		<result property="pd_content" column="pd_content" />
+		<!-- 이벤트 설정을 위한 추가 컬럼 등록 -->
+		<result property="pd_fileName" column="fileName" />
+		<result property="event" column="event" />
+		<!-- 이벤트 설정을 위한 추가 컬럼 등록 -->
+	</resultMap>
+	
+	<resultMap id="imageResult" type="ImageFileVO">
+	   <result property="image_num" column="image_num" />
+	   <result property="fileName" column="fileName" />
+	   <result property="fileType" column="fileType" />
+	   <result property="pd_id" column="pd_id" />
+	   <result property="pd_name" column="pd_name" />
+	</resultMap>
+	
+	
+	
+	<select id="selectAllProductList" resultMap="productResult"  parameterType="java.util.Map"  >
+	    <![CDATA[
+	    
+	    select * from product_tbl order by pd_inDate asc;
+	    
+	    
+	    
+	   ]]>
+	</select>
+	
+	
+	<insert id="insertNewProduct" parameterType="java.util.Map"   >
+		
+	    <![CDATA[
+		   insert into product_tbl(
+		                pd_id, 
+		                pd_name,
+                    	pd_code,
+                    	pd_price,
+                    	pd_inCount,
+						
+						pd_level,
+						pd_group1,
+						pd_group2,
+						pd_status,
+						
+					    pd_limitDate,
+						pd_content,
+						event)				
+			             
+					  			values(
+					  			      #{pd_id},
+					  			      #{pd_name},
+					  			      #{pd_code},
+					  			      #{pd_price},
+					  			     
+					  			      #{pd_inCount},
+					  			      
+					  			      #{pd_level},
+					  			      #{pd_group1},
+					  			      #{pd_group2},
+					  			      
+					  			      #{pd_status},
+					  			      
+					  			      #{pd_limitDate},
+					  			      #{pd_content},
+					  			      #{event}
+					 			 )
+		]]>
+	</insert> 
+		<insert id="insertProductImageFile" parameterType="imageFileVO"   >
+
+	    <![CDATA[
+		   insert into product_d_image (
+		                                   fileName,
+										   fileType,
+											pd_id
+											)
+											  values(
+											   		#{fileName},
+											   		#{fileType},
+											   		#{pd_id}
+											   		 )
+		]]>
+	</insert> 
+	
+	
+	
+	
+	<delete id="deleteProduct">
+	<![CDATA[
+	   delete from product_tbl
+	   where
+	   pd_id=#{pd_id}
+	  	]]>      
+  	</delete>
+  	
+  		
+  		
+	<delete id="deleteProduct2"  parameterType="String">
+	<![CDATA[
+	   delete from product_tbl
+	   where
+	   pd_id=#{pd_id}
+	  	]]>      
+  	</delete>
+  	
+  	
+  	<select id="selectProductDetail" resultMap="productResult"   parameterType="String"  >
+	    <![CDATA[
+		     select g.*, d.fileName from product_tbl g, product_d_image d
+	        where g.pd_id=d.pd_id
+	        and d.filetype='main_image'
+	        and g.pd_id=#{pd_id}
+	        order by g.pd_id
+    	]]>
+	</select>
+	
+	
+	<select id="selectProductImageFileList" resultMap="imageResult"   parameterType="String"  >
+	    <![CDATA[
+		    	select * from product_d_image
+		    	where  
+			    pd_id=#{pd_id}
+			    
+    	]]>
+	</select>	
+	
+	
+	
+	<update id="updatePdInfo" parameterType="java.util.HashMap" >
+      update product_tbl
+       <set> 
+         <if test="pd_name != '' and pd_name != null">  
+           pd_name=#{pd_name}
+         </if>
+         <if test="pd_code != '' and pd_code != null">  
+           pd_code=#{pd_code}
+         </if>
+         <if test="pd_price != '' and pd_price != null">  
+           pd_price=#{pd_price}
+         </if>
+         <if test="pd_inCount != '' and pd_inCount != null">  
+           pd_inCount=#{pd_inCount}
+         </if>
+         <if test="pd_level != '' and pd_level != null">  
+           pd_level=#{pd_level}
+         </if>
+         <if test="pd_group1 != '' and pd_group1 != null">  
+           pd_group1=#{pd_group1}
+         </if>
+         <if test="pd_group2 != '' and pd_group2 != null">  
+           pd_group2=#{pd_group2}
+         </if>
+         <if test="pd_status != '' and pd_status != null">  
+           pd_status=#{pd_status}
+         </if>
+         <if test="pd_limitDate != '' and pd_limitDate != null">  
+           pd_limitDate=#{pd_limitDate}
+         </if>
+         <if test="pd_content != '' and pd_content != null">  
+           pd_content=#{pd_content}
+         </if>
+         <if test="event != '' and event != null">  
+           event=#{event}
+         </if>
+        
+        </set>
+       where 
+       pd_id=#{pd_id}
+   
+   </update>
+   
+	
+	<update id="updatePdImage" parameterType="imageFileVO">
+		update product_d_image
+		set fileName=#{fileName}
+		where	 
+		pd_id=#{pd_id} 
+	</update>
+	
+  	<!-- 체킹한 상품을 부르는 맵퍼 설정 -->
+	<select id="selectEventList" resultMap="productResult">	
+		<![CDATA[
+         select @ROWNUM:=@ROWNUM+1, t.* 
+         from( select p.*,d.fileName from product_tbl p, product_d_image d
+         where p.pd_id = d.pd_id
+         and d.fileType = 'main_image'
+         and p.event=1 
+         order by pd_inDate desc
+         ) t where (@ROWNUM:=0) <16	 	
+      ]]>
+    </select>
+	<!-- 체킹한 상품을 부르는 맵퍼 설정 -->
+	
+	
+	
+	
+	
+	
+	
+	</mapper>

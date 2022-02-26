@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="/order/addOrder" extends="baseLayout">
+		<put-attribute name="title" value="주문처리 창" />
+		<put-attribute name="body" value="/WEB-INF/views/order/addOrder.jsp" />
+	</definition>
+	
+	<!-- 20220209 신우주 카트 전체 상품 주문 위한 설정 -->
+	<definition name="/order/addOrderAllCart" extends="baseLayout">
+		<put-attribute name="title" value="주문 처리 창" />
+		<put-attribute name="body" value="/WEB-INF/views/order/addOrder.jsp" />
+	</definition>
+	<!-- 20220209 신우주 카트 전체 상품 주문 위한 설정 -->
+	
+	<definition name="/order/INIStdPayRequest" extends="baseLayout">
+	   <put-attribute name="title" value="" />
+	   <put-attribute name="body" value="/WEB-INF/views/iniStdPay/INIStdPayRequest.jsp" />
+	</definition>
+	
+	
+   	<definition name="/order/INIStdPayRelay" extends="baseLayout">
+	   <put-attribute name="title" value="" />
+	   <put-attribute name="body" value="/WEB-INF/views/iniStdPay/INIStdPayRelay.jsp" />
+	</definition>
+	
+	
+	<definition name="/order/INIStdPayBill" extends="baseLayout">
+	   <put-attribute name="title" value="" />
+	   <put-attribute name="body" value="/WEB-INF/views/iniStdPay/INIStdPayBill.jsp" />
+	</definition>
+
+	
+	<definition name="/order/INIStdPayReturn" extends="baseLayout">
+	   <put-attribute name="title" value="" />
+	   <put-attribute name="body" value="/WEB-INF/views/iniStdPay/INIStdPayReturn.jsp" />
+	</definition>
+	
+	
+	<definition name="/order/close" extends="baseLayout">
+	   <put-attribute name="title" value="" />
+	   <put-attribute name="body" value="/WEB-INF/views/iniStdPay/close.jsp" />
+	</definition>
+	
+	
+	<definition name="/order/popup" extends="baseLayout">
+	   <put-attribute name="title" value="" />
+	   <put-attribute name="body" value="/WEB-INF/views/iniStdPay/popup.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.member">
+ <resultMap id="memResult" type="memberVO">
+		<result property="mb_id" column="mb_id" />
+        <result property="mb_pw" column="mb_pw" />
+        <result property="mb_name" column="mb_name" />
+        <result property="mb_level" column="mb_level" />
+        <result property="mb_subAdmin" column="mb_subAdmin" />
+        <result property="mb_allPrice" column="mb_allPrice" />
+        <result property="mb_allCount" column="mb_allCount" />
+        <result property="mb_likeCount" column="mb_likeCount" />
+        <result property="tel_1" column="tel_1" />
+        <result property="tel_2" column="tel_2" />
+        <result property="tel_3" column="tel_3" /> 
+        <result property="email_1" column="email_1" />
+        <result property="email_2" column="email_2" />
+        <result property="email_STS" column="email_STS" />
+        <result property="mb_birthY" column="mb_birthY" />
+        <result property="mb_birthM" column="mb_birthM" />
+        <result property="mb_birthD" column="mb_birthD" />
+        <result property="zipcode" column="zipcode" />
+        <result property="road_address" column="road_address" />
+        <result property="jibun_address" column="jibun_address" />
+        <result property="other_address" column="other_address" />        
+        <result property="join_date" column="join_date" />
+	</resultMap>  
+		
+
+	<select id="selectAllMemberList" resultMap="memResult">
+      <![CDATA[
+         select SQL_CALC_FOUND_ROWS * from member_tbl order by join_date desc limit #{offset},#{count}	 	
+      ]]>
+	</select>
+	
+	<select id="selectName" resultType="String">
+    <![CDATA[
+	select name from member_tbl
+	where mb_id = #{mb_id}			
+    ]]>
+	</select>
+	
+	<select id="selectPwd" resultType="int" >
+	  <![CDATA[ 
+	    select pwd from member_tbl 
+	    where mb_id = #{mb_id}
+	 ]]>
+	 </select> 
+	 
+	   <select id="allMemberCount" resultType="int">
+  	select FOUND_ROWS();
+  </select>
+	
+	<select id="selectMemberById" resultType="memberVO"  parameterType="String" >
+      <![CDATA[
+         select * from member_tbl
+         where
+         mb_id=#{mb_id}			
+      ]]>
+	 </select>	
+	
+	<select id="selectMemberByPwd" resultMap="memResult"  parameterType="int" >
+      <![CDATA[
+         select * from member_tbl
+         where
+         mb_pw = #{mb_pw}			
+      ]]>
+    </select>
+    
+    
+    
+  <insert id="insertMember"  parameterType="memberVO">
+   <![CDATA[
+       insert into member_tbl(mb_id, mb_pw, mb_name, mb_gender, 
+       tel_1, tel_2, tel_3, email_1,mb_level,
+        zipcode, road_address, jibun_address, other_address)
+       values(#{mb_id}, #{mb_pw}, #{mb_name}, #{mb_gender}, 
+       #{tel_1}, #{tel_2}, #{tel_3}, #{email_1}, 1, 
+       #{zipcode}, #{road_address}, #{jibun_address}, #{other_address})
+      ]]>      
+   </insert>  
+    
+    
+  
+  <!--   <insert id="insertMember"  parameterType="memberVO">
+   <![CDATA[
+       insert into member_tbl(mb_id, mb_pw, mb_name, tel_1, tel_2, tel_3, email_1,mb_level)
+       values(#{mb_id}, #{mb_pw}, #{mb_name}, #{tel_1}, #{tel_2}, #{tel_3}, #{email_1},1)
+      ]]>      
+   </insert> -->
+	
+<!-- 	<insert id="insertMember2"  parameterType="java.util.Map">
+	<![CDATA[
+		  insert into member_tbl(mb_id, mb_pw, mb_name, email_1)
+		 values(#{mb_id}, #{mb_pw}, #{mb_name}, #{email_1})
+		]]>      
+    </insert> -->
+    
+    <update id="updateMember"  parameterType="memberVO">
+     <![CDATA[
+	     update member_tbl
+	     set mb_pw=#{mb_pw}, mb_name=#{mb_name}, email_1=#{email_1}
+	     where
+	     mb_id=#{mb_id}
+      	]]>      
+   	</update> 
+     
+     <!-- 회원 탈퇴 맵퍼 -->
+   	<delete id="deleteMember"  parameterType="String">
+	<![CDATA[
+	   delete from member_tbl
+	   where
+	   mb_id=#{mb_id} and mb_pw=#{mb_pw}
+	  	]]>      
+  	</delete>
+  	<!-- 회원 탈퇴 맵퍼 -->
+  	
+  	
+  	<select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
+	<![CDATA[
+		select * from member_tbl	
+		where mb_id=#{mb_id} and mb_pw=#{mb_pw}		
+	]]>
+  </select>
+  
+  	
+  	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
+      <![CDATA[
+          select * from member_tbl
+      ]]>
+      <where>
+         <if test="mb_name != ''  and  mb_name != null">
+            mb_name=#{mb_name}
+         </if>
+         <if test="email_1 != ''  and email_1 != null">
+           and email_1 = #{email_1}
+         </if>
+      </where>
+      order by join_date desc
+    </select>
+  
+ <!--  
+   <sql id="a">
+    <![CDATA[
+      select * from member_tbl
+     ]]> 
+   </sql>  -->  
+  
+ <!-- 
+  <select id="searchMember" parameterType="memberVO" resultMap="memResult">
+	   <include refid="a" /> 
+	   <![CDATA[
+         select * from member_tbl 
+      ]]>
+	  
+       <where>
+		  <choose>
+		      <when test="mb_name != '' and mb_name != null and  email_1 != '' and email_1 != null">
+			     mb_name=#{mb_name} and email_1=#{email_1}
+		      </when>
+		      <when test="mb_name != '' and mb_name != null">
+			     mb_name = #{mb_name}
+		      </when>
+		      <when test="email_1 !='' and email_1 != null">
+			    email_1 = #{email_1}
+		      </when>
+	      </choose>
+       </where>
+       order by join_date desc
+   </select> -->
+   
+
+   
+  
+   <select id="foreachSelect" resultMap="memResult" parameterType="java.util.Map">
+      <!-- <include refid="a" /> -->
+      <![CDATA[
+        select * from member_tbl 
+          
+      ]]>
+      
+      where name in
+      <foreach item="item" collection="list" open="(" separator="," close=")" >
+         #{item}
+      </foreach>
+      order by join_date desc
+   </select>
+   
+   <insert id="foreachInsert"  parameterType="java.util.Map">
+      <foreach item="item"  collection="list"   open="INSERT ALL" separator=" " close="SELECT * FROM DUAL" >
+          INTO member_tbl(mb_id, mb_pw, mb_name, email_1)
+          VALUES  (#{item.mb_id},
+                    #{item.mb_pw},
+                    #{item.mb_name},
+                    #{item.email_1})
+      </foreach>
+   </insert> 
+   
+   
+   <!-- 아이디 중복검사 -->
+   <select id="selectOverlappedID" parameterType="String" resultType="String">
+	  select if(count(*),'true','false')
+      from member_tbl
+      where mb_id = #{mb_id}
+	</select>
+   
+   
+   
+			<!-- 아이디 찾기 -->
+	<select id="find_id" parameterType="String" resultType="String">
+		select * from member_tbl where email_1 = #{email_1}
+	</select>
+
+    
+    
+
+</mapper>

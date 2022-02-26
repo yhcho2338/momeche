@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+      <definition name="/mypage/myPageMain" extends="baseLayout">
+      <put-attribute name="title" value="회원 마이 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/mypage/mypage_main.jsp" />
+   </definition>
+   
+    <definition name="/mypage/myOrderList" extends="baseLayout">
+       <put-attribute name="title" value="내 주문 목록 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/mypage_orderList.jsp" />
+     </definition>
+        
+      <definition name="/mypage/listMyOrderHistory" extends="baseLayout">
+       <put-attribute name="title" value="내 주문 상세 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/listMyOrderHistory.jsp" />
+     </definition>
+     
+     
+     <!-- 정승원 220216 회원정보 -->
+
+     <definition name="/mypage/myInfoList" extends="baseLayout">
+       <put-attribute name="title" value="내 정보 조회 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myInfoList.jsp" />
+     </definition>
+	
+     <definition name="/mypage/myDetailInfo" extends="baseLayout">
+       <put-attribute name="title" value="내 정보 수정 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myDetailInfo.jsp" />
+     </definition>
+     
+
+     
+     <!-- 정승원 220216 회원정보 끝 -->
+     
+</tiles-definitions>

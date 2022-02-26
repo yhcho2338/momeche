@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+  <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
+   
+	<definition name="/board/listArticles" extends="baseLayout">
+	      <put-attribute name="title" value="글목록창" />
+	      <put-attribute name="body" value="/WEB-INF/views/board/listArticles.jsp" />
+	</definition>
+	
+	<definition name="/board/articleForm" extends="baseLayout">
+		<put-attribute name="title" value="글쓰기창" />
+		<put-attribute name="body" value="/WEB-INF/views/board/articleForm.jsp" />
+	</definition>
+	
+	<definition name="/board/viewArticle" extends="baseLayout">
+    <put-attribute name="title" value="글상세창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/viewArticle.jsp" />
+  </definition>
+  
+  	<definition name="/board/replyForm" extends="baseLayout">
+    <put-attribute name="title" value="답글쓰기 창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/replyForm.jsp" />
+  </definition>
+  
+  
+  
+  
+  
+   <definition name="/board/question" extends="baseLayout">
+    <put-attribute name="title" value="자주묻는 질문" />
+    <put-attribute name="body" value="/WEB-INF/views/board/question.jsp" />
+  </definition>
+  
+    <definition name="/board/qna_articleForm" extends="baseLayout">
+    <put-attribute name="title" value="자주묻는 질문 글쓰기창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/qna_articleForm.jsp" />
+  </definition>
+  
+   <definition name="/board/viewQnaArticle" extends="baseLayout">
+    <put-attribute name="title" value="자주묻는 질문 글 상세창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/qna_viewArticle.jsp" />
+  </definition>
+  
+  
+  
+  <!-- 공지사항 tiles -->
+	<definition name="/board/listNotice" extends="baseLayout">
+    <put-attribute name="title" value="공지사항 글 목록창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/listNotice.jsp" />
+    </definition>
+    
+    <definition name="/board/notice_articleForm" extends="baseLayout">
+    <put-attribute name="title" value="공지사항 글쓰기창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/notice_articleForm.jsp" />
+    </definition>
+
+    <definition name="/board/viewNoticeArticle" extends="baseLayout">
+    <put-attribute name="title" value="공지사항 글상세창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/notice_viewArticle.jsp" />
+    </definition>
+    
+    <!-- 1:1문의 -->
+    
+    <definition name="/board/listOto" extends="baseLayout">
+    <put-attribute name="title" value="1:1문의 글 리스트" />
+    <put-attribute name="body" value="/WEB-INF/views/board/listOto.jsp" />
+    </definition>
+    
+    <definition name="/board/oto_articleForm" extends="baseLayout">
+    <put-attribute name="title" value="1:1문의 글 리스트" />
+    <put-attribute name="body" value="/WEB-INF/views/board/oto_articleForm.jsp" />
+    </definition>
+
+   <definition name="/board/viewOtoArticle" extends="baseLayout">
+    <put-attribute name="title" value="1:1문의 글 상세창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/oto_viewArticle.jsp" />
+  </definition>
+  
+  <definition name="/board/oto_replyForm" extends="baseLayout">
+    <put-attribute name="title" value="1:1문의 답글쓰기 창" />
+    <put-attribute name="body" value="/WEB-INF/views/board/oto_replyForm.jsp" />
+  </definition>    	
+	
+	
+	
+</tiles-definitions>
