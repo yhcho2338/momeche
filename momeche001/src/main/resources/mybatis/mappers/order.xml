@@ -34,16 +34,8 @@
         	order by pay_order_time desc
 		]]>
 	</select>	
-	
 
-   <!--  <select id="selectMyOrderList" resultMap="orderGoodsResult"  parameterType="orderVO"  >
-	    <![CDATA[
-			elect * from order_tbl 
-			where date_format(pay_order_time,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') 
-        	and mb_id=#{mb_id}
-        	order by pay_order_time desc
-		]]>
-	</select> -->
+
 
 	<insert id="insertOrderList" parameterType="java.util.Map">
 		insert into order_tbl(order_id, mb_id, pd_id, pd_name, 
@@ -60,6 +52,7 @@
 		    #{order_date}, #{order_state}); 
 		
 	</insert>
+
 
 
 	<!-- 장바구니 수량 조회 쿼리 -->

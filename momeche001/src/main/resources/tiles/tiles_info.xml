@@ -13,7 +13,7 @@
    </definition>
    
    
-     
+    <!-- 영상게시판 --> 
 	<definition name="/info/listInfo" extends="baseLayout">
 	      <put-attribute name="title" value="향수정보 목록창" />
 	      <put-attribute name="body" value="/WEB-INF/views/info/list_infoArticles.jsp" />

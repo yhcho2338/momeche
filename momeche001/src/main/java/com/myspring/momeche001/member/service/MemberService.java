@@ -26,10 +26,10 @@ public interface MemberService {
 	public String find_id(HttpServletResponse response, String email_1) throws Exception; 
 	public void memberDelete(MemberVO memberVO) throws Exception;
 	
-	/**/
+	
 	public String getAccessToken (String authorize_code) throws Exception;
 	public HashMap<String, Object> getUserInfo (String access_Token) throws Exception;
-	/**/
+	
 	
 }
 

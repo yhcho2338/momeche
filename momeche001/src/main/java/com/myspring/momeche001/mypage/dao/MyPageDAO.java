@@ -16,7 +16,6 @@ public interface MyPageDAO {
 	
 	public int selectCount(CartVO cartVO) throws DataAccessException;
 	
-	// 정승원 회원 정보수정
 	public void updateMyInfo(Map mbMap) throws DataAccessException;
 
 	public MemberVO selectMyDetailInfo(String mb_id) throws DataAccessException;

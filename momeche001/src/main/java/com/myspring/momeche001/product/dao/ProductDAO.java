@@ -11,7 +11,6 @@ import com.myspring.momeche001.product.vo.ImageFileVO;
 public interface ProductDAO {
 	
 	public List<ProductVO> selectGoodsList(String pdStatus) throws DataAccessException;
-	public List<ProductVO> selectMWPdList(String pd_group1) throws DataAccessException;
 	
 	public List<ProductVO> selectPdList(ProductVO productVO) throws DataAccessException;
 	
@@ -20,6 +19,6 @@ public interface ProductDAO {
 	public List<ImageFileVO> selectPdDetailImage(String pd_id) throws DataAccessException;
 	public List<ProductVO> selectGoodsBySearchWord(String searchWord) throws DataAccessException;
 
-	public List<ProductVO> productListToOption(Map<String, String> option) throws DataAccessException;
+	
 
 }

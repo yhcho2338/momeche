@@ -45,14 +45,6 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		
 		
-		/*@Override
-		public List selectAllMemberList() throws DataAccessException {
-			List<MemberVO> membersList = null;
-			membersList = sqlSession.selectList("mapper.member.selectAllMemberList");
-			return membersList;
-			
-		}*/
-		
 		@Override
 		public List selectAllMemberList(int offset, int count) throws DataAccessException {
 			List<MemberVO> membersList = new ArrayList<MemberVO>();
@@ -114,7 +106,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		
 		
-		/*회원 탈퇴 DAO*/
+		// 회원 탈퇴 
 		@Override
 		public void deleteMember(MemberVO memberVO) throws DataAccessException {
 			sqlSession.delete("mapper.member.deleteMember", memberVO);

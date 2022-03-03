@@ -18,16 +18,12 @@ import com.myspring.momeche001.member.vo.MemberVO;
 
 public interface MemberController {
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	/*20220216 회원 가입 완료 얼럿 설정을 위해 기존 회원 가입 메서드 주석 처리  신우주
-	public ModelAndView addMember(@ModelAttribute("member") MemberVO memberVO,RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	*/
-	/*20220216 회원 가입 완료 얼럿 설정을 위해 기존 회원 가입 메서드 삽입  신우주*/
-public ResponseEntity addMember(@ModelAttribute("member") MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	/*//20220216 회원 가입 완료 얼럿 설정을 위해 기존 회원 가입 메서드 삽입 끝  신우주*/
+
+	public ResponseEntity addMember(@ModelAttribute("member") MemberVO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	
 	public ModelAndView removeMember(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@ModelAttribute("member") MemberVO memberVO, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
 	
 	public ResponseEntity   overlapped(@RequestParam("mb_id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception;
 

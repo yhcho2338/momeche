@@ -43,17 +43,7 @@ public class CartControllerImpl extends BaseController implements CartController
 		session.setAttribute("cartMap", cartMap);
 		return mav;
 	}
-	/*
-	@RequestMapping(value="/myCartList.do", method = RequestMethod.GET)
-	public ModelAndView myPageMain(String message, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String viewName = (String)request.getAttribute("viewName");
-		List cartList = cartService.cartList();
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("cartList", cartList);
-		return mav;
-	}
-*/
+
 	@Override
 	@RequestMapping(value="/addProductInCart.do", method = RequestMethod.POST, produces="application/text; charset=utf-8")
 	public @ResponseBody String addProductInCart(@RequestParam("pd_id") String pd_id,

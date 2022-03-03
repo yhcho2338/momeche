@@ -43,10 +43,9 @@
 	  
 	</resultMap>
 	
+
 	
-	
-	
-	  <select id="selectGoodsList" parameterType="String" resultMap="goodsResult"   >
+	<select id="selectGoodsList" parameterType="String" resultMap="goodsResult" >
         <![CDATA[
          select @ROWNUM:=@ROWNUM+1 ,t.*
           from(
@@ -59,39 +58,7 @@
 	    ]]>
 	</select>
 	
-
-
-	<select id="selectMWPdList" parameterType="String" resultMap="goodsResult">
-	  <![CDATA[
-	  		select @ROWNUM:=@ROWNUM+1 ,t.*
-	  		from(
-	  		select p.*, d.fileName from product_tbl p, product_d_image d
-	  		where p.pd_id = d.pd_id
-	  		and pd_group1 = #{pd_group1}
-	  		and d.fileType='main_image') t where (@ROWNUM:=0) < 16;
-	  
-	  
-	  
-	   ]]>
-	 	
-	</select>
-	
-	
-	<select id="selectWPdList" parameterType="String" resultMap="goodsResult">
-	  <![CDATA[
-	  		select @ROWNUM:=@ROWNUM+1 ,t.*
-	  		from(
-	  		select p.*, d.fileName from product_tbl p, product_d_image d
-	  		where p.pd_id = d.pd_id
-	  		and pd_group1 = #{pd_group1}
-	  		and d.fileType='main_image') t where (@ROWNUM:=0) < 16;
-	  
-	  
-	  
-	   ]]>
-	 	
-	</select> 
-	
+		
 	
 	<select id="selectPdList" parameterType="String" resultMap="goodsResult">
 	  <![CDATA[
@@ -151,7 +118,6 @@
 	  		
 	  		</choose>
 	
-	   
 	</select>
 	
 	
@@ -164,6 +130,8 @@
 	        order by g.pd_id;
     	]]>
 	</select>
+	
+	
 	<select id="selectPdDetailImage" resultMap="imageResult"   parameterType="String"  >
 	    <![CDATA[
 		    	select * from  product_d_image 
@@ -180,10 +148,11 @@
 		    where g.pd_id=d.pd_id
 		    and d.filetype='main_image'
 		    and g.pd_name like concat('%', #{searchWord}, '%')
-		    
-		    
+		    		    
 		]]>
 	</select>	
+	
+	
 	
 	<select id="selectKeywordSearch" resultType="String"   parameterType="String"  >
 	    <![CDATA[
@@ -195,14 +164,4 @@
 	</select>
 	
 	
-		<select id="productPriceSort" resultType="String"   parameterType="String"  >
-	    <![CDATA[
-		 select * from product_tbl order by pd_price desc;
-		]]>
-	</select>
-	
-	
-	
-	
-	
-	</mapper>
+</mapper>

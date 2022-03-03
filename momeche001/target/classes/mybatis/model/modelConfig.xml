@@ -4,6 +4,7 @@
 
 <configuration>
 	<typeAliases>
+	
 		<typeAlias type="com.myspring.momeche001.member.vo.MemberVO" alias="memberVO" />
 		<typeAlias type="com.myspring.momeche001.product.vo.ProductVO" alias="productVO" />
 		<typeAlias type="com.myspring.momeche001.product.vo.ImageFileVO" alias="imageFileVO" />

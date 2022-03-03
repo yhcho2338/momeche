@@ -44,7 +44,7 @@
         <div class = "Product_Explanation"> <!-- 프리미엄 항목, 가성비 항목 등등-->
             프리미엄 항목
         </div>
-        <!-- 줄 수정 20220206 신우주 -->
+        <!-- 줄 수정 -->
         <hr width=100% style="margin-bottom:10px;">
         <div class = "category_button">
         <a href="#" class="btn btn-outline-dark">ALL</a>    &nbsp;&nbsp;
@@ -63,7 +63,7 @@
                     <div class="area3">
                     <div id = "perfume_1" class="xans-recode-">
                         <div class="prd_box">
-                        	<!-- 20220206 페이지 상세 하이퍼링크 설정 신우주 -->
+                        	<!-- 페이지 상세 하이퍼링크 -->
                             <a href="${contextPath}/goods/productDetail.do?pd_id=${item.pd_id }">
                             <div class="thumb_img"> 
                               	<img width="121" height="154"  src="${contextPath}/thumbnails.do?pd_id=${item.pd_id}&fileName=${item.pd_fileName}">

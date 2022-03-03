@@ -79,7 +79,7 @@
                     </div>
                     
                     
-                    <!-- 카아로20220215신우주 -->
+                    <!-- 카카오 로그인 -->
                     <c:if test="${userId eq null}">
 				        <a href="https://kauth.kakao.com/oauth/authorize?client_id=ddbb538ec4bed14008f92e3da8026791&redirect_uri=http://localhost:8080/momeche001/member/login&response_type=code">
 				            <img src="${contextPath}/resources/image/kakao_login.png" 
@@ -89,104 +89,14 @@
 				    <c:if test="${userId ne null}">
 				        <h1>로그인 성공입니다</h1>
 				    </c:if>
-                	<!-- 카아로20220215신우주 -->
+                	<!-- 카카오 로그인 끝 -->
                                           
                     
                 </div>
             </form>
         </div>
-    </div>
-    
-    
-    <!-- 20220214 신우주 카카오 로그인 기능 위한 코드/// 사용 안함-->
+    </div>    
 
-    <!-- 
-    <a href="#0" id="kakaoLogin"><img src="${contextPath}/resources/image/kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
 
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script>
-        function saveToDos(token) { //item을 localStorage에 저장합니다. 
-            typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token)); 
-        };
-
-        window.Kakao.init('411d73ff5b5e76be3fdbad76337a3d64');
-        
-        function kakaoLogin() {
-            window.Kakao.Auth.login({
-                scope: 'account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
-                success: function(response) {
-                    saveToDos(response.access_token)  // 로그인 성공하면 사용자 엑세스 토큰 sessionStorage에 저장
-                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-                        url: '/v2/user/me',
-                        success: (res) => {
-                            const kakao_account = res.kakao_account;
-                            alert('로그인 성공');
-                            window.location.href='${contextPath}/main/main.do'
-                        }
-                    });
-                },
-                fail: function(error) {
-                    console.log(error);
-                }
-            });
-        };
-
-        const login = document.querySelector('#kakaoLogin');
-        login.addEventListener('click', kakaoLogin);
-    </script>
-    
-    
-    
-    
-    
-    
-    
-    <ul>
-    	<li onClick="kakoLogin();">
-    		<a href="javascript:void(0)">
-    			<span>카카오 로그인</span>
-    		</a>
-    	</li>
-    </ul>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script>
-    	//카카오 로그인
-    	
-    	function kakoLogin(){
-    		$.ajax({
-    			url: '${contextPatn}/member/loginKakao.do',
-    			type: 'get',
-    			async: false,
-    			dataType: 'text',
-    			success: function(res){
-    				location.href = res;
-    				consol.log(res);
-    			}
-    		});
-    	}
-    	
-    	$(document).ready(fuction(){
-    		var kakaoInfo = '${kakaoInfo}';
-    		
-    		if(kakaoInfo != ""){
-    			var data = JSON.parse(kakaoInfo);
-    			
-    			alert("카카오 로그인 성공 \n accessToken : " + data['accessToken']);
-    			alert(
-    					"user : \n" + "email : "
-    					+ data['email']
-    					+ "\n nickname : "
-    					+ data['nickname']
-    					);
-    		}
-    	});
-    
-    </script>
-    -->
-    <!-- 20220214 신우주 카카오 로그인 기능 위한 코드 -->
-    
-    
-
-	</body>
+</body>
 </html>

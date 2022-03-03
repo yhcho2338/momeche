@@ -143,7 +143,7 @@
 				alert("에러가 발생했습니다."+data);
 			},
 			complete : function(data, textStatus) {
-				//alert("작업을완료 했습니다");
+				//alert("작업을 완료 했습니다");
 				
 			}
 		}); //end ajax
@@ -267,7 +267,8 @@
                             </div>
                             
                         </div>
-                        <!-- 주소 시작 신우주 -->
+                        
+                        <!-- 주소검섹 시작 -->
                         	<div class = "join_row">
                                     <h3 class = "join_title">
                                         <label for = "join_zipcode">우편번호</label>

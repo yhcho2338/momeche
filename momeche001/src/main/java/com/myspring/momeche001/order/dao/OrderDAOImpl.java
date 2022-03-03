@@ -25,9 +25,7 @@ public class OrderDAOImpl implements OrderDAO {
 		sqlSession.insert("mapper.order.insertOrderList",ProductMap);
 		return Integer.parseInt((String)ProductMap.get("result"));
 	}
-	
-
-	
+		
 	
 	@Override
 	public List<OrderVO> listMyOrderGoods(OrderVO orderVO) throws DataAccessException{

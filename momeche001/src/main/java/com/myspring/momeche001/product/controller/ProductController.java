@@ -19,18 +19,10 @@ public interface ProductController {
 	
 	public @ResponseBody String keywordSearch(@RequestParam("keyword") String keyword,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,HttpServletRequest request, HttpServletResponse response) throws Exception;
-
-	
-	public ModelAndView productManMain(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
-	public ModelAndView productPriceSort(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	
 	public ModelAndView productSort(ProductVO productVO,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	
-	public ModelAndView productList(@RequestParam Map<String, String> info, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
-	public Map<String, Map<String, Object>> getFullList(@RequestParam Map<String, String> info, HttpServletRequest request) throws Exception;
-	
+
 }

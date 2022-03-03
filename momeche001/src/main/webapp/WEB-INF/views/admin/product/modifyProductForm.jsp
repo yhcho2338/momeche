@@ -14,7 +14,6 @@
 
   request.setCharacterEncoding("UTF-8");
   String pd_id = request.getParameter("pd_id");
-  //System.out.println("pd_id :"+ pd_id);
   
 %>
 
@@ -28,26 +27,7 @@ String contextPath = request.getContextPath();
 <html>
 <head>
 <meta charset="utf-8">
-<%-- 
-<c:choose>
-<c:when test='${not empty product.pd_status}'>
-<script>
-window.onload=function()
-{
-	init();
-}
 
-function init(){
-	var frm_mod_goods=document.frm_mod_goods;
-	var h_goods_status=frm_mod_goods.h_goods_status;
-	var goods_status=h_goods_status.value;
-	var select_goods_status=frm_mod_goods.goods_status;
-	 select_goods_status.value=pd_status;
-}
-</script>
-</c:when>
-</c:choose>
---%>
 
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript">
@@ -195,7 +175,7 @@ function init(){
       			alert("에러가 발생했습니다."+textStatus);
       		},
       		complete : function(data, textStatus) {
-      			//alert("작업을완료 했습니다");
+      			//alert("작업을 완료 했습니다");
       			
       		}
       	}); //end ajax	
@@ -318,7 +298,7 @@ select option {font-weight:bold; height:50px;}
 				 <input type="submit" value="수정" onClick="fn_modify_goods('${product.pd_id }','pd_limitDate');"/>  
 				</td>
 			</tr>
-			<!-- 20220217 이벤트 상품 수정 코드 삽입 신우주 -->
+			<!-- 이벤트 상품 수정 코드 -->
 			<tr>
 				<th>이벤트 설정</th>
 				
@@ -342,7 +322,8 @@ select option {font-weight:bold; height:50px;}
 				</td>
 			</tr>
 		</table>	
-				<!-- 20220217 이벤트 상품 수정 코드 삽입 신우주 끝-->
+				<!-- 이벤트 상품 수정 코드 끝-->
+				
 			</div>
 			<div class="tab_content" id="tab2">
 				<p style="font-size:25px; padding:10px;">상품설명</p>
@@ -363,15 +344,6 @@ select option {font-weight:bold; height:50px;}
 			<form id="FILE_FORM" method="post" enctype="multipart/form-data"  >
 				<p style="padding:10px; font-size:25px;">상품이미지</p>
 				<table style="margin-left:auto; margin-right:auto;">
-					<%-- <tr>
-						<td align="right">이미지파일 수정</td>
-			            
-			            <td  align="left"> <input type="file" id="main_image" name="main_image" value="파일 추가" onClick="fn_addFile()"/></td>
-			            <td>
-				            <div id="d_file">
-				            </div>
-			            </td>
-					</tr> --%>
 					
 					<tr>
 					<c:forEach var="item" items="${imageFileList }"  varStatus="itemNum">

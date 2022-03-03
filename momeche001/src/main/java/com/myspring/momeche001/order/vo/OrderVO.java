@@ -25,7 +25,7 @@ public class OrderVO {
 	private Date order_date;
 	private String order_state;
 	
-	// 최종수정 22.01.25 (지속 수정 요망)
+
 	
 	public int getOrder_num() {
 		return order_num;

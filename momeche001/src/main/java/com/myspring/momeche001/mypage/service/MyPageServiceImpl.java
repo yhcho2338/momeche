@@ -21,29 +21,19 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private MyPageDAO myPageDAO;
 	
-	/*public List findMyOrderInfo(String mb_id) throws Exception{
-		return myPageDAO.selectMyOrderInfo(mb_id);
-	}*/
-	
-	
+		
 	public List<OrderVO> findMyOrderInfo(String mb_id) throws Exception{
 	
 		return myPageDAO.selectMyOrderInfo(mb_id);
 	}
 	
 
-	
 	public int selectCount(CartVO cartVO) throws Exception {
-		
+	
 		int count = myPageDAO.selectCount(cartVO);
-
 		return count;
-
 	}
 	
-	
-	
-	// 정승원 220216 회원정보
 	
 	// 회원정보 조회
 	public List<MemberVO> findMyInfo(String mb_id) throws Exception{
@@ -63,7 +53,6 @@ public class MyPageServiceImpl implements MyPageService {
 		return myPageDAO.selectMyDetailInfo(mb_id);
 	}
 	
-	// 정승원 220216 회원정보 끝
 	
 
 

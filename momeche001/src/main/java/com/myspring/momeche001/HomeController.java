@@ -19,57 +19,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class); 
 	
-	/*
-	  Simply selects the home view to render by returning its name.
-	 */
-/* @RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "main";
-	}*/
-	
-	/*
-	@RequestMapping(value = "/product_main.do", method = RequestMethod.GET)
-	public String product_main(Locale locale, Model model) {
-
-		
-		return "product_main";
-	}
-	
-	
-	@RequestMapping(value = "/product_detail.do", method = RequestMethod.GET)
-	public String product_detail(Locale locale, Model model) {
-
-		
-		return "product_detail";
-	}
-	*/
-	
-	
-	@RequestMapping(value = "/company/use_info.do", method = RequestMethod.GET)
-	public String use_info(Locale locale, Model model) {
-
-		
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "/company/use_info";
-	}
-	
-	
+	// 업체소개 페이지
 	@RequestMapping(value = "/company/About_Us.do", method = RequestMethod.GET)
 	public String About_Us(Locale locale, Model model) {
 
@@ -83,6 +33,24 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "/company/About_Us";
+	}
+	
+	
+	
+	// 유튜브 페이지 시험용
+	@RequestMapping(value = "/company/use_info.do", method = RequestMethod.GET)
+	public String use_info(Locale locale, Model model) {
+
+		
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "/company/use_info";
 	}
 	
 	

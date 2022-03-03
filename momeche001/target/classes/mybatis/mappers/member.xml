@@ -29,12 +29,15 @@
         <result property="join_date" column="join_date" />
 	</resultMap>  
 		
+		
 
 	<select id="selectAllMemberList" resultMap="memResult">
       <![CDATA[
          select SQL_CALC_FOUND_ROWS * from member_tbl order by join_date desc limit #{offset},#{count}	 	
       ]]>
 	</select>
+	
+	
 	
 	<select id="selectName" resultType="String">
     <![CDATA[
@@ -43,6 +46,8 @@
     ]]>
 	</select>
 	
+	
+	
 	<select id="selectPwd" resultType="int" >
 	  <![CDATA[ 
 	    select pwd from member_tbl 
@@ -50,9 +55,13 @@
 	 ]]>
 	 </select> 
 	 
-	   <select id="allMemberCount" resultType="int">
-  	select FOUND_ROWS();
-  </select>
+	 
+	 
+	<select id="allMemberCount" resultType="int">
+  		select FOUND_ROWS();
+  	</select>
+	
+	
 	
 	<select id="selectMemberById" resultType="memberVO"  parameterType="String" >
       <![CDATA[
@@ -61,6 +70,8 @@
          mb_id=#{mb_id}			
       ]]>
 	 </select>	
+	
+	
 	
 	<select id="selectMemberByPwd" resultMap="memResult"  parameterType="int" >
       <![CDATA[
@@ -72,8 +83,8 @@
     
     
     
-  <insert id="insertMember"  parameterType="memberVO">
-   <![CDATA[
+  	<insert id="insertMember"  parameterType="memberVO">
+   	  <![CDATA[
        insert into member_tbl(mb_id, mb_pw, mb_name, mb_gender, 
        tel_1, tel_2, tel_3, email_1,mb_level,
         zipcode, road_address, jibun_address, other_address)
@@ -81,23 +92,9 @@
        #{tel_1}, #{tel_2}, #{tel_3}, #{email_1}, 1, 
        #{zipcode}, #{road_address}, #{jibun_address}, #{other_address})
       ]]>      
-   </insert>  
+    </insert>  
+ 
     
-    
-  
-  <!--   <insert id="insertMember"  parameterType="memberVO">
-   <![CDATA[
-       insert into member_tbl(mb_id, mb_pw, mb_name, tel_1, tel_2, tel_3, email_1,mb_level)
-       values(#{mb_id}, #{mb_pw}, #{mb_name}, #{tel_1}, #{tel_2}, #{tel_3}, #{email_1},1)
-      ]]>      
-   </insert> -->
-	
-<!-- 	<insert id="insertMember2"  parameterType="java.util.Map">
-	<![CDATA[
-		  insert into member_tbl(mb_id, mb_pw, mb_name, email_1)
-		 values(#{mb_id}, #{mb_pw}, #{mb_name}, #{email_1})
-		]]>      
-    </insert> -->
     
     <update id="updateMember"  parameterType="memberVO">
      <![CDATA[
@@ -108,7 +105,9 @@
       	]]>      
    	</update> 
      
-     <!-- 회원 탈퇴 맵퍼 -->
+     
+     
+    <!-- 회원 탈퇴 맵퍼 -->
    	<delete id="deleteMember"  parameterType="String">
 	<![CDATA[
 	   delete from member_tbl
@@ -116,7 +115,7 @@
 	   mb_id=#{mb_id} and mb_pw=#{mb_pw}
 	  	]]>      
   	</delete>
-  	<!-- 회원 탈퇴 맵퍼 -->
+  	
   	
   	
   	<select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
@@ -125,6 +124,7 @@
 		where mb_id=#{mb_id} and mb_pw=#{mb_pw}		
 	]]>
   </select>
+  
   
   	
   	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
@@ -142,37 +142,6 @@
       order by join_date desc
     </select>
   
- <!--  
-   <sql id="a">
-    <![CDATA[
-      select * from member_tbl
-     ]]> 
-   </sql>  -->  
-  
- <!-- 
-  <select id="searchMember" parameterType="memberVO" resultMap="memResult">
-	   <include refid="a" /> 
-	   <![CDATA[
-         select * from member_tbl 
-      ]]>
-	  
-       <where>
-		  <choose>
-		      <when test="mb_name != '' and mb_name != null and  email_1 != '' and email_1 != null">
-			     mb_name=#{mb_name} and email_1=#{email_1}
-		      </when>
-		      <when test="mb_name != '' and mb_name != null">
-			     mb_name = #{mb_name}
-		      </when>
-		      <when test="email_1 !='' and email_1 != null">
-			    email_1 = #{email_1}
-		      </when>
-	      </choose>
-       </where>
-       order by join_date desc
-   </select> -->
-   
-
    
   
    <select id="foreachSelect" resultMap="memResult" parameterType="java.util.Map">
@@ -189,6 +158,8 @@
       order by join_date desc
    </select>
    
+   
+   
    <insert id="foreachInsert"  parameterType="java.util.Map">
       <foreach item="item"  collection="list"   open="INSERT ALL" separator=" " close="SELECT * FROM DUAL" >
           INTO member_tbl(mb_id, mb_pw, mb_name, email_1)
@@ -200,8 +171,9 @@
    </insert> 
    
    
+   
    <!-- 아이디 중복검사 -->
-   <select id="selectOverlappedID" parameterType="String" resultType="String">
+    <select id="selectOverlappedID" parameterType="String" resultType="String">
 	  select if(count(*),'true','false')
       from member_tbl
       where mb_id = #{mb_id}
@@ -209,7 +181,7 @@
    
    
    
-			<!-- 아이디 찾기 -->
+	<!-- 아이디 찾기 -->
 	<select id="find_id" parameterType="String" resultType="String">
 		select * from member_tbl where email_1 = #{email_1}
 	</select>

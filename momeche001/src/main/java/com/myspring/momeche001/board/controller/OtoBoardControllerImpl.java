@@ -33,7 +33,7 @@ public class OtoBoardControllerImpl implements OtoBoardController {
 	@Autowired
 	private OtoVO otoVO;
 	
-	//1:1���� ����Ʈ
+	//1:1게시글 목록 보기
 	@Override
 	@RequestMapping(value= "/board/listOto.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listOto(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -89,7 +89,7 @@ public class OtoBoardControllerImpl implements OtoBoardController {
 	}
 	
 	
-	// 1:1���� �� �󼼺���
+	// 1:1게시글 보기
 	
 	@Override
 	@RequestMapping(value = "/board/viewOtoArticle.do",method = RequestMethod.GET)
@@ -117,14 +117,14 @@ public class OtoBoardControllerImpl implements OtoBoardController {
 	 		otoboardService.removeOtoArticle(oto_num);
 	 	
 	 		message = "<script>";
-	 		message += " alert('1:1���� ���� �Ϸ�');";
+	 		message += " alert('1:1 게시물 삭제 성공');";
 	 		message += " location.href='"+request.getContextPath()+"/board/listOto.do';";
 	 		message +=" </script>";
 	 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	 	 
 	 	}catch(Exception e) {
 	 		message = "<script>";
-	 		message += " alert('1:1���� ���� ����');";
+	 		message += " alert('1:1 게시물 삭제 실패');";
 	 		message += " location.href='"+request.getContextPath()+"/board/listOto.do';";
 	 		message +=" </script>";
 	 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -157,14 +157,14 @@ public class OtoBoardControllerImpl implements OtoBoardController {
 	    try {
 	    	otoboardService.modOtoArticle(otoMap);
 	       message = "<script>";
-		   message += " alert('������ �Ϸ�Ǿ����ϴ�.');";
+		   message += " alert('1:1게시글 수정 성공');";
 		   message += " location.href='"+multipartRequest.getContextPath()+"/board/viewOtoArticle.do?oto_num="+oto_num+"';";
 		   message +=" </script>";
 	       resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	       
 	    }catch(Exception e) {
 	      message = "<script>";
-		  message += " alert('���� ����');";
+		  message += " alert('1:1게시글 수정 실패');";
 		  message += " location.href='"+multipartRequest.getContextPath()+"/board/viewOtoArticle.do?oto_num="+oto_num+"';";
 		  message +=" </script>";
 	      resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -173,14 +173,14 @@ public class OtoBoardControllerImpl implements OtoBoardController {
 	    try {
 	    	otoboardService.modOtoReply(otoMap);
 		       message = "<script>";
-			   message += " alert('������ �Ϸ�Ǿ����ϴ�.');";
+			   message += " alert('1:1글 답변 수정 성공');";
 			   message += " location.href='"+multipartRequest.getContextPath()+"/board/viewOtoArticle.do?oto_num="+oto_num+"';";
 			   message +=" </script>";
 		       resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		       
 		    }catch(Exception e) {
 		      message = "<script>";
-			  message += " alert('���� ����');";
+			  message += " alert('1:1글 답변 수정 실패');";
 			  message += " location.href='"+multipartRequest.getContextPath()+"/board/viewOtoArticle.do?oto_num="+oto_num+"';";
 			  message +=" </script>";
 		      resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -226,14 +226,14 @@ public class OtoBoardControllerImpl implements OtoBoardController {
 			
 	
 			message = "<script>";
-			message += " alert('��� ��� �Ϸ�');";
+			message += " alert('1:1글에 답변 성공');";
 			message += " location.href='"+multipartRequest.getContextPath()+"/board/listOto.do'; ";
 			message +=" </script>";
 		    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			
 			message = " <script>";
-			message +=" alert('��� ��� ����');');";
+			message +=" alert('1:1글에 답변 실패');');";
 			message +=" location.href='"+multipartRequest.getContextPath()+"/board/oto_articleForm.do'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

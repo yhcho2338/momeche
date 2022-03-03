@@ -16,14 +16,15 @@
  	<result property = "mb_id" column = "mb_id"/>
  </resultMap>
  
- <!--  공지사항 글 목록 -->
+ 
+   <!-- 영상게시판 글 목록 -->
  	<select id = "selectAllInfoList" resultMap="infoResult" >
  	<![CDATA[
  	select * from info_tbl order by info_num desc;
  		]]>
  	</select>
  
- <!--  공지사항 글쓰기 -->
+   <!-- 영상게시판 글쓰기 -->
  
    <insert id="insertNewInfo"  parameterType="java.util.Map">
 	<![CDATA[
@@ -32,36 +33,39 @@
 		]]>      
    </insert> 
 	
-	<!--  공지사항 글 번호 -->
-	  <select id="selectNewInfo_num" resultType="int"  >
+	<!-- 영상게시판 글 번호 -->
+	<select id="selectNewInfo_num" resultType="int"  >
 	<![CDATA[
 		SELECT IFNULL(max(info_num), 0)+1 from info_tbl; 
 	]]>
-</select>
+	</select>
 
-<!--  공지사항 상세 -->
-<select id="selectInfo" resultType="infoVO"   parameterType="int">
+
+  	<!-- 영상게시판 상세 -->
+	<select id="selectInfo" resultType="infoVO"   parameterType="int">
     <![CDATA[
       SELECT * from info_tbl
       where info_num = #{info_num}		
     ]]>
-  </select> 
+  	</select> 
   
-  
-  <!-- 공지사항 삭제 -->
-<delete id="deleteInfo"  parameterType="int">
+ 
+  	<!-- 영상게시판 삭제 -->
+	<delete id="deleteInfo"  parameterType="int">
     <![CDATA[
       delete from info_tbl
       where info_num = #{info_num};
     ]]>      
-</delete>
-
-  <update id="updateInfo"  parameterType="java.util.Map">
+	</delete>
+	
+	
+	<!-- 영상게시판 수정 -->
+  	<update id="updateInfo"  parameterType="java.util.Map">
  			update info_tbl
 			set info_title=#{info_title},
 			info_url=#{info_url},
 			info_url_origin=#{info_url_origin},	 
 			info_content=#{info_content}
 			where info_num=#{info_num}
-  </update>
+  	</update>
 </mapper>

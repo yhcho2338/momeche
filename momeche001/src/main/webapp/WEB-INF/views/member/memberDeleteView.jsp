@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<!-- 탈퇴 신우주 -->
+<!-- 탈퇴 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +92,7 @@
 				</div>
 			</form>
 			</div>
+			
 			<!-- 
 			<div>
 				
@@ -102,6 +103,7 @@
 				
 			</div>
 			 -->
+			 
 		</section>
 		</div>
 		<div class="div-0"></div>

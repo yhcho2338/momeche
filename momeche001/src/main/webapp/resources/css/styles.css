@@ -368,7 +368,7 @@ input[id="menuicon"]:checked + ul + div {left:0;}
 
 .third_table td {text-align: center;}
 
-/* 정승원 220216 회원정보 수정 페이지 */
+/* 회원정보 수정 페이지 */
 
 .ps_box.updateID {
   
@@ -388,15 +388,12 @@ input[id="menuicon"]:checked + ul + div {left:0;}
   margin-left: 115px;
 }
 
-/* 정승원 220216 회원정보 수정 페이지 끝 */
+/* 회원정보 수정 페이지 끝 */
 
 
-/* �쉶�썝�젙蹂� �닔�젙 �걹*/
-
-/* 留덉씠�럹�씠吏� �걹 */
 
 
-/* �쉶�썝媛��엯 �뤌 */
+/* 회원가입 */
 .join_form {text-align: center;}
 
 .join_row {

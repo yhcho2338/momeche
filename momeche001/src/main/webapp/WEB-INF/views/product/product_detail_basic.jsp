@@ -30,12 +30,12 @@
 <html>
 
      <head>
-     <!--20220217 카트 js 설정을 위해 삽입 -->
+     <!--카트 js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cart.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/cartCss.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <!--20220217 카트 js 설정을 위해 삽입 -->
+     <!-- 카트 js 끝 -->
      
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -246,7 +246,7 @@ h1 {
 </style>
        
        
-<!-- 20220211 신우주  상품설명 css 시작-->
+<!-- 상품설명 css 시작-->
 <link rel="stylesheet" type="text/css" href="resources/css/test.css"> 
 <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
 <link rel="stylesheet" type="text/css" href="resources/css/slick2.css">
@@ -388,7 +388,7 @@ div.prodinfo{ width:1230px; height:100px;}
 </style>     
 
   
-<!-- 보더에서 필요한 스크립트 -->
+<!-- 보더에 활용할 스크립트 -->
 <script>
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
@@ -450,7 +450,7 @@ $(document).ready(function(){
 
 
 
-//20220211 신우주 텝넘기는거
+// 텝 이동
 $(document).ready(function() {
 
 	//When page loads...
@@ -506,13 +506,13 @@ $(document).ready(function() {
 				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			},
 			complete : function(data, textStatus) {
-				//alert("작업을완료 했습니다");
+				//alert("작업을 완료 했습니다");
 			}
 		}); //end ajax	
 	}
     </script>  
         
-        <!-- 20220126 상품 수량 조절 -->
+  	<!-- 상품 수량 조절 -->
   	<script type="text/javascript">
      function fn_cart_count(){
     	 var addr = '${contextPath}/goods/productDetail.do?pd_id=?/';
@@ -523,7 +523,7 @@ $(document).ready(function() {
 		 
      }
      </script>  
-  <!-- 20220126 상품 수량 조절  끝-->
+ 	<!-- 상품 수량 조절 끝 -->
         
         
     </head>
@@ -678,7 +678,7 @@ $(document).ready(function() {
 			</div>
 			<br>
 
-			<!-- <button id="update" onclick="fn_update()">수정하기</button> -->
+			
 		
 		</div>
 	</div>
@@ -693,12 +693,12 @@ $(document).ready(function() {
 
 	<br><br><br><br><br>
 	
-<!-- 20220210 신우주 상품 상세 페이지 수정 시작 -->
+<!-- 상품상세 페이지 정보란 -->
 <hr style="color:#000000; size: thin solid #000000;">
                
                 <div class="prodinfo">
                 	<div class="prodnav">
-                	<!-- 상품 상세 정보에 관한 네비게이션 -->
+                	<!-- 상품상세 정보에 관한 네비게이션 -->
         				<ul class="nav nav-tabs" style="width:100%; margin:0 auto;">
   
 						  <li class="nav-item">
@@ -783,7 +783,7 @@ $(document).ready(function() {
                 </tbody>
             </table>
         </div>
-        <!-- /게시판 -->
+        <!-- 게시판 끝 -->
     </div>
 						  </div>
 						  <div class="tab-pane fade" id="question">
@@ -858,7 +858,7 @@ $(document).ready(function() {
 						</div>
 						</div>
 					</div>		
-		<!-- 20220210 신우주 상품 상세 페이지 수정 끝 -->
+		<!--상품상세 페이지 정보란 끝 -->
 
 </body>
 <script type="text/javascript">

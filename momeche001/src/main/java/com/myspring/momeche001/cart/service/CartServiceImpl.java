@@ -19,14 +19,7 @@ import com.myspring.momeche001.product.vo.ProductVO;
 public class CartServiceImpl implements CartService{
 	@Autowired
 	private CartDAO cartDAO;
-/*
-	@Override
-	public List cartList() throws DataAccessException {
-		List cartList = null;
-		cartList = cartDAO.selectAllCartList();	
-		return cartList;
-	}
-*/
+
 	@Override
 	public boolean findCartProduct(CartVO cartVO) throws DataAccessException {
 		

@@ -126,14 +126,12 @@ select option {font-weight:bold; height:50px;}
 						</select>
 					</td>
 				</tr>
-				
-				
-				
+							
 				<tr>
 					<th>상품 유통기한</th>
 					<td><input id = "pd_Limitdate" name="pd_limitDate" type="date" size="40" /></td>
 				</tr>
-				<!-- 이벤트 설정을 위한 코드 추가 신우주 -->
+				<!-- 이벤트 -->
 				<tr>
 					<th>이벤트 상품 설정</th>
 					<td><input type="checkbox" id="chkbox" name="event" value=1></td>
@@ -172,8 +170,7 @@ select option {font-weight:bold; height:50px;}
 	<div>
 	 <table>
 	 <tr>
-			  <td style="border:0px;">
-				 <!-- <input  type="submit" value="상품 등록하기"> -->
+			  <td style="border:0px;">			
 				  <button class="button3"  style="margin-left:560px;" type="submit" onClick="fn_add_new_goods(this.form)">등록하기</button> 
 			  </td>
 			</tr>

@@ -19,7 +19,7 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<!-- 20220216 1:1문의 게시판 스타일 가져옴 최승진 제작 jsp 부분입니다. 신우주 -->
+<!-- 게시판 스타일 반복 -->
 <style>
 .csc_img img {width:300px; height:200px;}
 .accordion {
@@ -58,7 +58,7 @@ input[id*="answer"]:checked + label em {background-position:0 -30px;}
 
 #oto_table th {background-color:#22262a; color:white; width:100px;}
 </style>
-<!-- 20220216 스타일 끝 -->
+<!-- 스타일 끝 -->
 </head>
 <body>
  <input type="checkbox" id="menuicon">
@@ -189,36 +189,7 @@ input[id*="answer"]:checked + label em {background-position:0 -30px;}
     </table>
   </div>
 </div>
-				
-				
-				<!-- 20220216 1:1문의 내역 리스트 실제 구현 위해서 연습용 코드 주석 처리 신우주
-                <div class = "table_top_text">
-                    1:1 문의
-                    <a  class="table_top_text_a" href="#">더보기</a>
-                </div>
-
-                <table class="third_table">
-                    <tr>
-                        <th class="th_1">번호</th>
-                        <th class="th_2">내용</th>
-                        <th class="th_3">작성날짜</th>
-                        <th class="th_4">답변여부</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>주문/배송조회 문의</td>
-                        <td>2021-11-09</td>
-                        <td>답변완료</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>사이즈 문의</td>
-                        <td>2021-11-10</td>
-                        <td>답변 대기중</td>
-                    </tr>
-                </table>
-                 -->
-                
+				        
             </div>
         </div>
 </body>

@@ -17,13 +17,9 @@ public interface OrderController {
 	
 	public ModelAndView addOrder(@RequestParam(value="pd_id", required=false) String pd_id, @RequestParam(value="pd_price", required=false) String pd_price, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
-	
 	public ResponseEntity addOrderList(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 	
-	/*20220209 신우주  -  카트 구매 (묶음 구매) 연습 코드 작성 시작*/
 	public ModelAndView addOrderAllCart(@RequestParam String[] cart_count, HttpServletRequest request, HttpServletResponse response) throws Exception; 
-	/*20220209 신우주  -  카트 구매 (묶음 구매) 연습 코드 작성 끝*/
-	//public ModelAndView orderForm(HttpServletRequest request, HttpServletResponse response) throws Exception; 
-	//public ModelAndView orderEachGoods(@ModelAttribute("orderVO") OrderVO _orderVO,
-      //      HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	
+	
 }

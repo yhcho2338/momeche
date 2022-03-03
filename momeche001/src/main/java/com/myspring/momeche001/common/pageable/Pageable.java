@@ -2,13 +2,13 @@ package com.myspring.momeche001.common.pageable;
 
 public class Pageable {
 
-	int totalCount; //�� ������ ����
-	int countPage; //����¡ ����
-	int page; //���� ������
-	int countList; //�� ������ ������ ����
-	int totalPage; //�� ������ ����
-	int startPage; //������ ���� ��ȣ
-	int endPage; //������ �� ��ȣ
+	int totalCount; // 총 로우 갯수
+	int countPage; // 페이지 갯수
+	int page; // 현 페이지
+	int countList; // 한 페이지 내 로우 갯수
+	int totalPage; // 총 페이지 갯수
+	int startPage; // 페이징 시작 번호
+	int endPage; // 페이징 끝 번호
 
 	public int getTotalCount() {
 		return totalCount;
@@ -80,7 +80,7 @@ public class Pageable {
         	setCountPage(10);
         }
         
-        //pagination
+        
         this.totalPage = totalCount / countList;
         
         if (totalCount % countList > 0) {

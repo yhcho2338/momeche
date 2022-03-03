@@ -255,7 +255,7 @@
 	</dependency>
 	
 	
-	<!-- 20220214 신우주 카카오 아이디 로그인 기능 구현 시작-->
+	<!-- 카카오 아이디 로그인 기능 구현 시작 -->
 	
 	<dependency>
 	    <groupId>jstl</groupId>

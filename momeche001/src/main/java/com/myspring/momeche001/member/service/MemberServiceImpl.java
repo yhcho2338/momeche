@@ -49,14 +49,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	
-	/*@Override
-	public List listMembers() throws DataAccessException{
-		List membersList = null;
-		membersList = memberDAO.selectAllMemberList();
-		return membersList;
-	}*/
-	
-	
 	@Override
 	public List listMembers(int offset, int count) throws DataAccessException{
 		List membersList = null;
@@ -219,7 +211,7 @@ public class MemberServiceImpl implements MemberService {
 
         return userInfo;
     }
-	/**/
+	
 	
 	
 	

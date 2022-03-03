@@ -52,30 +52,28 @@
         
 	</resultMap>  
 
-<!-- 마이페이지 주문내역 -->
-<select id="selectMyOrderInfo" resultMap="orderGoodsResult" parameterType="String">
+	<!-- 마이페이지 주문내역 -->
+	<select id="selectMyOrderInfo" resultMap="orderGoodsResult" parameterType="String">
 	 <![CDATA[
 		select * from order_tbl where mb_id = #{mb_id};
 
 		]]>
 
-
-</select>
-
+	</select>
 
 
-<!-- 정승원 220216 회원정보 -->
 
-
-<!-- 회원정보 조회 -->
-<select id="selectMyInfo" resultMap="memResult" parameterType="String">
+	<!-- 마이페이지 회원정보 조회 -->
+	<select id="selectMyInfo" resultMap="memResult" parameterType="String">
 	 <![CDATA[
 		select * from member_tbl where mb_id = #{mb_id};
 		]]>
-</select>
+	</select>
 
-<!-- 회원정보 수정 -->
-<update id="updateMyInfo" parameterType="java.util.HashMap">
+
+
+	<!-- 마이페이지 회원정보 수정 -->
+	<update id="updateMyInfo" parameterType="java.util.HashMap">
 	   update member_tbl
 			   <set>
 			      <if test=" mb_pw!='' and mb_pw!=null">
@@ -112,6 +110,7 @@
 	</update>
 	
 	
+	
 	<select id="selectMyDetailInfo" resultType="memberVO"   parameterType="String" >
 	    <![CDATA[
 			select * from member_tbl
@@ -119,7 +118,7 @@
     	]]>
 	</select>
 	
-<!-- 정승원 220216 회원정보 끝 -->
+
 
 
 

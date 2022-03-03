@@ -55,7 +55,7 @@
                 </label>
             </li>
         </ul>
-        <!-- 2022.02.06 최승진 사이드 바 수정-->
+        <!-- 사이드 바 -->
         <div class="sidebar">
             <ul style="margin-top:15px;">
                 <hr style="height: 5px; background-color:rgb(33,37,41); margin-top:30px;">
@@ -130,30 +130,9 @@
 </table>
 <div style="padding-top:10px;">
 	<a  href="#" style="margin-left:920px;"><button class="button3" type="submit">적용하기</button></a>
-	<!-- <p><a  href="${contextPath}/member/memberForm.do"><h5 style="text-align:center">회원가입</h5></a></p> -->
 </div>
 </form>
-		<!--
-              <div id="notice_pagination" style="margin-left:600px; margin-top:100px;">
-                <div class="paging">
-                <c:if test="${pageable.startPage > 1}">
-                  <button type="button" class="prev" onclick="location.href='${contextPath}/member/listMembers.do?pages=${pageable.startPage-1}'"><i class="fas fa-angle-double-left"></i></button>
-                </c:if>
-                <c:forEach var="i" begin="${pageable.startPage}" end="${pageable.endPage}" step="1">
-                	<c:choose>
-                		<c:when test="${i == pageable.page}">
-                  			<button class="on" onclick="location.href='${contextPath}/member/listMembers.do?pages=${i}'">${i}</button>
-                  		</c:when>
-                  		<c:otherwise>
-                  			<button onclick="location.href='${contextPath}/member/listMembers.do?pages=${i}'">${i}</button>
-                  		</c:otherwise>
-                  	</c:choose>
-                </c:forEach>
-                <c:if test="${pageable.endPage < pageable.totalPage}">
-                  <button type="button" class="next" onclick="location.href='${contextPath}/member/listMembers.do?pages=${pageable.endPage+1}'"><i class="fas fa-angle-double-right"></i></button>
-                </c:if>
-                </div>
-              </div> -->
+		
 </div>
 </div>
 </body>

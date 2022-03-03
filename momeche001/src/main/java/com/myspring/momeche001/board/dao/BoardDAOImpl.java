@@ -21,12 +21,14 @@ public class BoardDAOImpl implements BoardDAO {
 @Autowired
 private SqlSession sqlSession;
 
+
+// 추천게시판 부분 시작
+
 @Override
 public List selectAllArticlesList() throws DataAccessException {
 	List<ArticleVO> articlesList=sqlSession.selectList("mapper.board.selectAllArticlesList");
 return articlesList;
 }
-
 
 
 @Override
@@ -47,10 +49,7 @@ return article_num;
 }
 
 
-
-
-//占쎈뼄餓ο옙 占쎈솁占쎌뵬 占쎈씜嚥≪뮆諭�
-
+// 추천게시판 사진 등록
 @Override
 public void insertNewImage(Map articleMap) throws DataAccessException {
 	List<ImageVO> imageFileList = (ArrayList)articleMap.get("imageFileList");
@@ -100,8 +99,11 @@ private int selectNewImageFileNO() throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectNewImageFileNO");
 }
 
+// 추천게시판 끝
 
-//占쎌쁽雅뚯눖硅占쎈뮉筌욌뜄揆
+
+//QnA 부분 시작
+// QnA 리스트
 @Override
 public List selectAllQnaList() throws DataAccessException {
 	List<QnaVO> qnaList=sqlSession.selectList("mapper.board.selectAllQnaList");
@@ -109,7 +111,7 @@ public List selectAllQnaList() throws DataAccessException {
 	return qnaList;
 }
 
-//占쎌쁽雅뚯눛釉�占쎈뮉筌욌뜄揆 占쎄땜占쎌뿯
+// QnA글 등록
 @Override
 public int insertNewQnaArticle(Map qnaMap) throws DataAccessException {
 	int qna_num = selectNewQnaArticle_num();
@@ -119,36 +121,36 @@ public int insertNewQnaArticle(Map qnaMap) throws DataAccessException {
 }
 
 
-//占쎌쁽雅뚯눛釉�占쎈뮉筌욌뜄揆 占쎄퐨占쎄문
+// QnA글 번호 등록
 private int selectNewQnaArticle_num() throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectNewQnaArticle_num");
 }
 
 
-//占쎌쁽雅뚯눛釉�占쎈뮉筌욌뜄揆 占쎄텣占쎌젫
+// QnA글 삭제
 @Override
 public void deleteQnaArticle(int qna_num) throws DataAccessException {
 	sqlSession.delete("mapper.board.deleteQnaArticle", qna_num);
 	
 }
 
-//占쎌쁽雅뚯눛釉�占쎈뮉筌욌뜄揆 占쎄맒占쎄쉭癰귣떯由�
+// QnA글 보기
 @Override
 public QnaVO selectQnaArticle(int qna_num) throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectQnaArticle", qna_num);
 }
 
-//占쎌쁽雅뚯눛釉�占쎈뮉筌욌뜄揆 占쎈땾占쎌젟
+// QnA글 수정
 @Override
 public void updateQnaArticle(Map qnaMap) throws DataAccessException {
 sqlSession.update("mapper.board.updateQnaArticle", qnaMap);
 }
 
+// QnA 부분 끝
 
-//怨듭��궗�빆
 
-//怨듭��궗�빆 由ъ뒪�듃
 
+// 공지사항 부분
 @Override
 public List selectAllNoticeList() throws DataAccessException {
 	List<NoticeVO> noticeList=sqlSession.selectList("mapper.board.selectAllNoticeList");
@@ -156,7 +158,6 @@ return noticeList;
 }
 
 
-// 怨듭��궗�빆 湲��벐湲� 李� 
 @Override
 public int insertNewNoticeArticle(Map noticeMap) throws DataAccessException {
 	int notice_num = selectNewNoticeArticle_num();
@@ -165,41 +166,34 @@ public int insertNewNoticeArticle(Map noticeMap) throws DataAccessException {
 	return notice_num;
 }
 
-//怨듭��궗�빆 湲�踰덊샇
+
 private int selectNewNoticeArticle_num() throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectNewNoticeArticle_num");
 }
 
-//怨듭��궗�빆 �긽�꽭�젙蹂�
+
 @Override
 public NoticeVO selectNoticeArticle(int notice_num) throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectNoticeArticle", notice_num);
 }
 
-//怨듭��궗�빆 �궘�젣
 
 @Override
 public void deleteNoticeArticle(int notice_num) throws DataAccessException {
-	sqlSession.delete("mapper.board.deleteNoticeArticle", notice_num);
-	
+	sqlSession.delete("mapper.board.deleteNoticeArticle", notice_num);	
 }
-
 
 
 @Override
 public void updateNoticeArticle(Map noticeMap) throws DataAccessException {
 	sqlSession.update("mapper.board.updateNoticeArticle", noticeMap);
-	
 }
 
+//공지사항 부분 끝
 
 
 
-
-// 1:1臾몄쓽
-
-// 1:1臾몄쓽 由ъ뒪�듃
-
+// 1:1게시판 부분 시작
 @Override
 public List selectAllOtoList() throws DataAccessException {
 	List<OtoVO> otoList=sqlSession.selectList("mapper.board.selectAllOtoList");
@@ -207,7 +201,6 @@ return otoList;
 }
 
 
-//1:1臾몄쓽 湲��벐湲곗갹
 @Override
 public int insertNewOtoArticle(Map otoMap) throws DataAccessException {
 	int oto_num = selectNewOtoArticle_num();
@@ -216,41 +209,35 @@ public int insertNewOtoArticle(Map otoMap) throws DataAccessException {
 	return oto_num;
 }
 
-//1:1臾몄쓽 湲�踰덊샇
+
 private int selectNewOtoArticle_num() throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectNewOtoArticle_num");
 }
 
-// 1:1臾몄쓽 �긽�꽭�젙蹂�
+
 @Override
 public OtoVO selectOtoArticle(int oto_num) throws DataAccessException {
 return sqlSession.selectOne("mapper.board.selectOtoArticle", oto_num);
 }
 
-//1:1臾몄쓽 �궘�젣
 
 @Override
 public void deleteOtoArticle(int oto_num) throws DataAccessException {
-	sqlSession.delete("mapper.board.deleteOtoArticle", oto_num);
-	
+	sqlSession.delete("mapper.board.deleteOtoArticle", oto_num);	
 }
 
 
-// 1:1臾몄쓽 �뾽�뜲�씠�듃
 @Override
 public void updateOtoArticle(Map otoMap) throws DataAccessException {
-	sqlSession.update("mapper.board.updateOtoArticle", otoMap);
-	
+	sqlSession.update("mapper.board.updateOtoArticle", otoMap);	
 }
 
 @Override
 public void updateOtoReply(Map otoMap) throws DataAccessException {
-	sqlSession.update("mapper.board.updateOtoReply", otoMap);
-	
+	sqlSession.update("mapper.board.updateOtoReply", otoMap);	
 }
 
-//1:1 臾몄쓽 �떟蹂�
-
+//1:1게시판 답변
 @Override
 public int insertNewOtoReply(Map otoMap) throws DataAccessException {
 	int oto_num = selectNewOtoArticle_num();
@@ -259,7 +246,7 @@ public int insertNewOtoReply(Map otoMap) throws DataAccessException {
 return oto_num;
 }
 
-
+// 1:1게시판 부분 끝
 
 
 

@@ -9,9 +9,5 @@
 		<put-attribute name="body" value="/WEB-INF/views/company/About_Us.jsp" />
 	</definition>
 	
-	<definition name="/company/use_info" extends="baseLayout">
-		<put-attribute name="title" value="향수활용 정보창" />
-		<put-attribute name="body" value="/WEB-INF/views/company/use_info.jsp" />
-	</definition>
 	
 </tiles-definitions>	

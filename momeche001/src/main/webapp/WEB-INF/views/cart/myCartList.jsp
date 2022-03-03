@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false"%>
-<!-- 카트페이지신우주 -->
+<!-- 카트페이지 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
@@ -29,7 +29,7 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/cartCss.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<%--상품 삭제 js 신우주 2022-01-26--%>
+<%--상품 삭제 js --%>
 <script type="text/javascript">
 function delete_cart_product(cart_num){
 	var cart_num=Number(cart_num);
@@ -47,7 +47,7 @@ function delete_cart_product(cart_num){
 </script>
 
 <meta charset="UTF-8">
-<title>장바구니 시험?</title>
+<title>장바구니</title>
 </head>
 <body>
 <input type="checkbox" id="menuicon">
@@ -112,22 +112,7 @@ function delete_cart_product(cart_num){
                     </div>
                     <div class="split"></div>
                 </div>
-		<!-- 
-		<div class="tab_container">
-			<div class="tab_container" id="container">
-				<p class="member_cart" align="center" style="font-size:2em">- ${member.mb_name}님의 장바구니 -</p>
-				
-			</div>
-		
-			<table border="1" align="center" width="70%">
-				<tr align="center">
-					<th><input id="allCheck" type="checkbox" name="allCheck"/></th>
-					<th>구분</th>
-					<th>상품명</th>
-					<th>구매가</th>
-					<th>수량</th>
-				</tr>
-				 -->
+
 				<c:forEach var="item" items="${myProductList}" varStatus="cnt">
 					<c:set var="cart_count" value="${myCartList[cnt.count-1].cart_count}" />
 				       <c:set var="cart_num" value="${myCartList[cnt.count-1].cart_num}" />
@@ -166,16 +151,7 @@ function delete_cart_product(cart_num){
                         <div class="basketcmd"><a href="javascript:delete_cart_product('${cart_num}');" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
                     </div>
                 	</div>
-                    <!-- 
-					<tr align="center">
-						<td><input name="RowCheck" type="checkbox" value="${AD_Cart}"></td>
-						<td>${AD_Cart.cart_num}</td>
-						<td>${AD_Cart.cart_num}</td>
-						<td>${AD_Cart.pd_name}</td>
-						<td>${AD_Cart.pd_id}</td>
-						<td>${AD_Cart.cart_count}</td>
-					</tr>
-				 -->
+
 				</c:forEach>
 				</div>
 				<div class="right-align basketrowcmd">
@@ -196,10 +172,10 @@ function delete_cart_product(cart_num){
 		
 	</form>
 	</div>
-                </div>
+   </div>
                 
                 
-                <!-- 시험                 -->
+             
                 
 </body>
 </html>

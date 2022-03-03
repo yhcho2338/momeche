@@ -60,21 +60,6 @@
                 <div class = "contents_title">
                     마이페이지
                 </div>
-                <!-- 
-                <table class="first_table">
-                    <tr>
-                        <th>${member.mb_name}님의 주문내역 입니다.</th>
-                    </tr>
-                    <tr>
-                        <td>주문 / 배송 : 1건<br> 적립금 : 1,000원</td>
-                    </tr>
-                </table>
-
-                <div class = "table_top_text">
-                    주문/배송조회(최근 1개월)
-                    <a  class="table_top_text_a" href="#">더보기</a>
-                </div> -->
-
 
                 
                 <table class="second_table" border="1"  align="center"  width="70%">

@@ -10,7 +10,7 @@ import com.myspring.momeche001.cart.vo.CartVO;
 public interface CartService {
 	public Map<String, List> myCartList(CartVO cartVO) throws Exception;
 	
-	//public List cartList() throws DataAccessException;
+	
 	public boolean findCartProduct(CartVO cartVO) throws DataAccessException;
 	public void addProductInCart(CartVO cartVO) throws DataAccessException;
 	public boolean modifyCartCount(CartVO cartVO) throws Exception;

@@ -131,13 +131,14 @@
 		]]>
 	</delete>
 	
-	<!-- 20220217 카트 전체 비우기 신우주 -->
+	<!-- 카트 전체 비우기 -->
 	<delete id="deleteAllCartProduct" parameterType="int">
 		<![CDATA[
 			delete from cart_tbl
 			where mb_id=#{mb_id}
 		]]>
 	</delete>
+	
 	<select id="selectMaxCart_num" resultType="int">
 		<![CDATA[
 			select ifnull(max(cart_num), 0) + 1 from cart_tbl

@@ -24,7 +24,9 @@ import com.myspring.momeche001.product.vo.ProductVO;
 	public class MainController extends BaseController {
 		@Autowired
 		private ProductService productService;
-
+		
+		
+		// 메인페이지
 		@RequestMapping(value= "/main/main.do" ,method={RequestMethod.POST,RequestMethod.GET})
 		public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
 			HttpSession session;
@@ -38,6 +40,9 @@ import com.myspring.momeche001.product.vo.ProductVO;
 			mav.addObject("productMap", productMap);
 			return mav;
 		}
-	}
+		
+		
+		
+}
 
 

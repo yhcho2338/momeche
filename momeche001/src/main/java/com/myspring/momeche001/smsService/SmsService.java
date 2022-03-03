@@ -10,6 +10,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SmsService {
 	public static void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) { 
 		
+		// 유료서비스 - 시연시 주석 해제 필요
 		/*
 	      String api_key = "NCSM7FUSOUXTRCGE"; 
 	      String api_secret = "TYHC9IQ6AUZVFYOMCZ4HQBEM8GNHMUKJ"; 

@@ -32,7 +32,7 @@ public class InfoControllerImpl implements InfoController {
 	@Autowired
 	private InfoVO infoVO;
 	
-	// ����Ʈ
+	// 영상게시판 리스트
 	@Override
 	@RequestMapping(value= "/info/listInfo.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -55,7 +55,7 @@ public class InfoControllerImpl implements InfoController {
 		 
 	 }
 	
-	// �� ���� (image ���� ����)
+	// 영상게시판 글 등록
 	
 	@Override
 	@RequestMapping(value="/info/addNewInfo.do" ,method = RequestMethod.POST)
@@ -89,14 +89,14 @@ public class InfoControllerImpl implements InfoController {
 			
 	
 			message = "<script>";
-			message += " alert('글 등록');";
+			message += " alert('영상게시글 등록');";
 			message += " location.href='"+multipartRequest.getContextPath()+"/info/listInfo.do'; ";
 			message +=" </script>";
 		    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			
 			message = " <script>";
-			message +=" alert('등록 실패');');";
+			message +=" alert('영상게시글 등록 실패');');";
 			message +=" location.href='"+multipartRequest.getContextPath()+"/info/info_articleForm.do'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -105,7 +105,7 @@ public class InfoControllerImpl implements InfoController {
 		return resEnt;
 	}
 	
-	//�󼼺���
+	// 영상게시판 글 보기
 	
 	@Override
 	@RequestMapping(value = "/info/viewInfo.do",method = RequestMethod.GET)
@@ -120,7 +120,7 @@ public class InfoControllerImpl implements InfoController {
 		return mav;
 	}
 	
-	// ����
+	// 영상게시판 글 삭제
 	
 	@Override
 	  @RequestMapping(value="/info/removeInfo.do" ,method = RequestMethod.POST)
@@ -136,14 +136,14 @@ public class InfoControllerImpl implements InfoController {
 	 		infoService.removeInfo(info_num);
 	 	
 	 		message = "<script>";
-	 		message += " alert('글 삭제');";
+	 		message += " alert('영상게시글 삭제');";
 	 		message += " location.href='"+request.getContextPath()+"/info/listInfo.do';";
 	 		message +=" </script>";
 	 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	 	 
 	 	}catch(Exception e) {
 	 		message = "<script>";
-	 		message += " alert('삭제 실패');";
+	 		message += " alert('영상게시글 삭제 실패');";
 	 		message += " location.href='"+request.getContextPath()+"/board/listInfo.do';";
 	 		message +=" </script>";
 	 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -153,7 +153,7 @@ public class InfoControllerImpl implements InfoController {
 	 	 	return resEnt;
 	 	  }
 	
-	// ����
+	// 영상게시판 글 수정
 	
 	@Override
 	@RequestMapping(value="/info/modInfo.do",method =RequestMethod.POST)
@@ -182,14 +182,14 @@ public class InfoControllerImpl implements InfoController {
 	    try {
 	    	infoService.modInfo(infoMap);
 	       message = "<script>";
-		   message += " alert('글 수정');";
+		   message += " alert('영상게시글 수정');";
 		   message += " location.href='"+multipartRequest.getContextPath()+"/info/viewInfo.do?info_num="+info_num+"';";
 		   message +=" </script>";
 	       resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	       
 	    }catch(Exception e) {
 	      message = "<script>";
-		  message += " alert('수정 실패');";
+		  message += " alert('영상게시글 수정 실패');";
 		  message += " location.href='"+multipartRequest.getContextPath()+"/info/viewInfo.do?info_num="+info_num+"';";
 		  message +=" </script>";
 	      resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

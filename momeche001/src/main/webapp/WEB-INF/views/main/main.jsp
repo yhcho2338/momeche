@@ -25,13 +25,13 @@
         <title>momeche main</title>
  
   <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
-  <!-- 슬릭스 구현 신우주 css 링크-->
+  <!-- 슬릭스 구현 css 링크-->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/slickex.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/slick-theme-ex.css">
-		<!-- 슬릭스 구현 신우주 style-->
+		<!-- 슬릭스 구현 style-->
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/resources/jquery/slickmainex.js" type="text/javascript" charset="utf-8"></script>
-  <!-- 슬릭스 연습 신우주 -->
+  <!-- 슬릭스 -->
   <script>
   		$(function(){
 			$('#slider-div').slick({
@@ -71,7 +71,7 @@
 			});
   		})
 	</script>
-	<!-- 슬릭스 연습 신우주 -->
+	<!-- 슬릭스 -->
 </head>
 
 
@@ -82,11 +82,11 @@
 <!-- Header-->
         <header class="bg-dark py-5" style="margin-left:-50px; width:1950px;">
         
-        	<!-- 슬릭스 연습 신우주 -->
+        	<!-- 슬릭스 -->
         	<div class="header_img">
         		<!-- <img src="${pageContext.request.contextPath}/resources/image/main_banner.jpg" width="100%" height="600"> -->
         		
-        		<!-- 메인 슬릭스 구현 연습 신우주-->
+        		<!-- 메인 슬릭스 구현 -->
         		<!-- stlye 은 slick 영역 확인용 -->
 				<div>
 				  	<div id="slider-div">
@@ -97,7 +97,7 @@
 				</div>
         	
         	</div>
-        	<!-- 슬릭스 연습 신우주 -->
+        	<!-- 슬릭스 -->
         </header>
 
 

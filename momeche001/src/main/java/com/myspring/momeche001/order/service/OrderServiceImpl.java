@@ -32,7 +32,6 @@ public class OrderServiceImpl implements OrderService{
 		return orderGoodsList;
 	}
 	
-	// ��ǰ�� ���� īƮ ���� ��ȸ Service
 	@Override
 	public int selectCount(CartVO cartVO) throws Exception {
 		

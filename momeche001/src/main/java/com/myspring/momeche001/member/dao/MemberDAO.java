@@ -9,7 +9,7 @@ public interface MemberDAO {
 	public int getTotalCount();
 	public int getCountPerId();
 	public List selectAllMemberList(int offset, int count) throws DataAccessException;
-	//public int addMember(MemberVO memberVO) throws DataAccessException;
+	
 	public int insertMember(MemberVO memberVO) throws DataAccessException;
 	public int deleteMember(String id) throws DataAccessException;
 	public MemberVO loginById(MemberVO memberVO) throws DataAccessException;

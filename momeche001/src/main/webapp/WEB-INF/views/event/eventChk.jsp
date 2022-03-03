@@ -62,7 +62,7 @@
                     <div class="area3">
                     <div id = "perfume_1" class="xans-recode-">
                         <div class="prd_box">
-                        	<!-- 20220206 페이지 상세 하이퍼링크 설정 신우주 -->
+                        	<!-- 페이지 상세 하이퍼링크 설정 -->
                             <a href="${contextPath}/goods/productDetail.do?pd_id=${item.pd_id }">
                             <div class="thumb_img"> 
                               	<img width="121" height="154"  src="${contextPath}/thumbnails.do?pd_id=${item.pd_id}&fileName=${item.pd_fileName}">

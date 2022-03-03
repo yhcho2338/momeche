@@ -24,10 +24,6 @@ public class ProductDAOImpl implements ProductDAO {
 	   return productList;	
 	}  
 	   
-	public List<ProductVO> selectMWPdList(String pd_group1) throws DataAccessException {
-		List<ProductVO> MWpdList=(ArrayList)sqlSession.selectList("mapper.product.selectMWPdList", pd_group1);
-	 return MWpdList;
-	}
 	
 	public List<ProductVO> selectPdList(ProductVO productVO) throws DataAccessException {
 		List<ProductVO> pdList=(ArrayList)sqlSession.selectList("mapper.product.selectPdList", productVO);
@@ -58,17 +54,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return imageList;
 	}
 	
-	
-	// �ɼǿ� ���� ��ǰ��ȸ DAO
-	@Override
-	public List<ProductVO> productListToOption(Map<String, String> option) throws DataAccessException {
 		
-		List<ProductVO> productList = sqlSession.selectList("mapper.product.productListToOption", option);
-				
-		return productList;
-     
-	}
-	
 	
 
 }

@@ -39,7 +39,6 @@ public class MyPageDAOImpl implements MyPageDAO {
 	
 	
 
-	// 정승원 220216 회원정보
 	
 	// 회원정보 수정
 	public void updateMyInfo(Map mbMap) throws DataAccessException {
@@ -63,7 +62,7 @@ public class MyPageDAOImpl implements MyPageDAO {
 		return myInfoList;
 	}   
 	
-	// 정승원 220216 회원정보 끝
+	
 	
 
 }

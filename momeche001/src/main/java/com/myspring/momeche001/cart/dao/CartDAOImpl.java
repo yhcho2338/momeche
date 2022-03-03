@@ -26,14 +26,7 @@ public class CartDAOImpl implements CartDAO{
 		return myProductList;
 	}
 	
-/*
-	@Override
-	public List selectAllCartList() throws DataAccessException {
-		List<CartVO> cartList = null;
-		cartList = sqlSession.selectList("mapper.cart.selectAllCartList");
-		return cartList;
-	}
-*/
+
 	@Override
 	public boolean selectCountInCart(CartVO cartVO) throws DataAccessException {
 		String result = sqlSession.selectOne("mapper.cart.selectCountInCart", cartVO);

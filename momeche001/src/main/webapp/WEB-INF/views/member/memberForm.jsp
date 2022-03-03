@@ -56,7 +56,7 @@
         
         
         
-        // 필수 입력정보 확인   정승원
+        // 필수 입력정보 확인  
         function checkValue()
         {
         	var id = document.joinInfo.mb_id.value; //아이디
@@ -158,43 +158,7 @@
          	}
         	// 필수 입력정보 확인 끝
 
-        
-        
-        
-        
-        
-        
-        
-        
-        /*
-        // 필수 입력정보 확인
-        function checkValue()
-        {
-            if(!document.joinInfo.mb_id.value){
-                alert("아이디를 입력하세요.");
-                return false;
-            }
-            
-            if(!document.joinInfo.mb_pw.value){
-                alert("비밀번호를 입력하세요.");
-                return false;
-            }
-            
-            // 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
-            if(document.joinInfo.mb_pw.value != document.joinInfo.mb_pw_check.value){
-                alert("비밀번호를 동일하게 입력하세요.");
-                return false;
-            }
-            
-            //인증 번호란에 값이 있어야 회원 가입 가능 유효성 검사
-            if(!document.joinInfo.join_mobileCA.value){
-            	alert("본인인증을 진행해 주세요.")
-            	return false;
-            }
-        }
-		*/
-        
-        
+   
         
         function fn_loginsuccess() {
         	
@@ -205,7 +169,7 @@
         
         
         
-           <!-- 도로명 주소 검색을 위한 다음 주소 코드 -->
+        <!-- 도로명 주소 검색 -->
         
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         
@@ -461,7 +425,7 @@
                             		</div>
                             </div>
                         </div>
-                        <!-- 주소 시작 신우주 -->
+                        <!-- 주소 시작 -->
                         	<div class = "join_row">
                                     <h3 class = "join_title">
                                         <label for = "join_zipcode">우편번호</label>

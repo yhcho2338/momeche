@@ -24,9 +24,9 @@ public class ProductVO {
 	private String pd_limitDate;
 	private String pd_content;
 	private String pd_fileName;
-	
+	// 상품 정렬
 	private String sort;
-	//이벤트 설정을 위한 추가 
+	// 이벤트 설정 
 	private int event;
 	
 	
@@ -222,12 +222,11 @@ public class ProductVO {
 
 
 
+	
 
 	public int getEvent() {
 		return event;
 	}
-
-
 
 
 	public void setEvent(int event) {

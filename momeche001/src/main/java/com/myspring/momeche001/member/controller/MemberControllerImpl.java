@@ -49,20 +49,6 @@ public class MemberControllerImpl implements MemberController{
 		mav.setViewName(viewName);
 		return mav;
 	}
-
-	
-	/*@Override
-	@RequestMapping(value="/member/listMembers.do", method = RequestMethod.GET)
-	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		String viewName = getViewName(request); 
-		response.setContentType("html/text;charset=utf-8");
-		logger.info("info ����: viewName: " + viewName);
-		logger.debug("debug ����: viewName: " + viewName);
-		List membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("membersList", membersList);
-		return mav;
-	} */
 	
 	
 	@Override
@@ -89,21 +75,7 @@ public class MemberControllerImpl implements MemberController{
 	}
 	
 	
-
-	/*
-	@Override
-	@RequestMapping(value="/member/addMember.do", method = RequestMethod.POST)
-	public ModelAndView addMember(@ModelAttribute("member") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		
-		int result = 0;
-		result = memberService.addMember(memberVO);
-		ModelAndView mav = new ModelAndView("redirect:/main/main.do");
-		return mav;
-	}
-	*/
-	
-	/*20220216 얼럿 설정을 위해서 회원 가입 메서드 수정 신우주 시작*/
+	// 회원가입 
 	@Override
 	@RequestMapping(value="/member/addMember.do", method = RequestMethod.POST)
 	public ResponseEntity addMember(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response)
@@ -131,7 +103,7 @@ public class MemberControllerImpl implements MemberController{
 		resEntity = new ResponseEntity(message, responseHeaders, HttpStatus.OK);
 		return resEntity;
 	}
-	/*20220216 얼럿 설정을 위해서 회원 가입 메서드 수정 신우주 끝*/
+	
 	
 	
 	@Override
@@ -144,16 +116,7 @@ public class MemberControllerImpl implements MemberController{
 		return mav;
 	}
 	
-	/*
-	@RequestMapping(value = {"/member/loginForm.do", "/member/logoutForm.do"}, method=RequestMethod.GET )
-	//@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
-	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		return mav;
-	}*/
-	
+
 	
 	@Override
 	@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
@@ -182,7 +145,8 @@ public class MemberControllerImpl implements MemberController{
 	}
 	return mav;
 	}
-	/*20220216 카카오 아이디 로그인 구현 신우주*/
+	
+	// 카카오 로그인 부분
 	 @RequestMapping(value="/")
 	    public String index() {
 	        return "/member/loginForm";
@@ -218,27 +182,7 @@ public class MemberControllerImpl implements MemberController{
 	        }
 	    	return mav;
 	    	}
-	    /*
-	    @RequestMapping(value="/member/login")
-	    public String login(@RequestParam("code") String code, HttpSession session) throws Exception {
-	    	System.out.println("code : " + code);
-	    	
-	        String access_Token = memberService.getAccessToken(code);
-	        System.out.println("access_Token : " + access_Token );
-	        
-	        HashMap<String, Object> userInfo = memberService.getUserInfo(access_Token);
-	        System.out.println("login Controller : " + userInfo);
-	        
-	        // 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-	        if(userInfo.get("nickname") != null) {
-	        	session.setAttribute("userId", userInfo.get("nickname"));
-	        	session.setAttribute("access_Token", access_Token);
-	        	
-	        }
-	    	return "/member/loginForm";
-	    }
-	    */
-	/**/
+	   
 	
 
 	@Override
@@ -253,7 +197,7 @@ public class MemberControllerImpl implements MemberController{
 	 }
 	
 	
-	// ���̵� �ߺ��˻�
+	// 아이디 유효성 검사 메소드
 	@Override
 	@RequestMapping(value="/member/overlapped.do" ,method = RequestMethod.POST)
 	public ResponseEntity overlapped(@RequestParam("mb_id") String mb_id,HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -278,7 +222,7 @@ public class MemberControllerImpl implements MemberController{
 		return mav;
 	}
 	
-	// ���̵� ã�� ��
+	// 아이디 찾기 메소드
 		@RequestMapping(value = "/member/find_id.do")
 		public String find_id_form() throws Exception{
 			return "/member/find_id";
@@ -304,7 +248,7 @@ public class MemberControllerImpl implements MemberController{
 			
 	
 	
-	/* 회원 탈퇴 시작*/			
+			
 	//회원 탈퇴 구현 GET
 		@RequestMapping(value="/member/memberDeleteView.do", method=RequestMethod.GET)
 		public String memberDeleteView() throws Exception{
@@ -328,7 +272,7 @@ public class MemberControllerImpl implements MemberController{
 								
 		}
 					
-    /* 회원 탈퇴 끝*/			
+		
 		
 	
 	

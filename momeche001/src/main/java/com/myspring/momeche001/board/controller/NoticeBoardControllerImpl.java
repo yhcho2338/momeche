@@ -45,7 +45,7 @@ public class NoticeBoardControllerImpl implements NoticeBoardController {
 	
 	}
 	
-	//°øÁö»çÇ× ±Û¾²±â
+	// ê³µì§€ì‚¬í•­ ë“±ë¡
 	
 	@Override
 	@RequestMapping(value="/board/addNewNoticeArticle.do" ,method = RequestMethod.POST)
@@ -75,14 +75,14 @@ public class NoticeBoardControllerImpl implements NoticeBoardController {
 			
 	
 			message = "<script>";
-			message += " alert('°øÁö»çÇ× µî·Ï ¿Ï·á');";
+			message += " alert('ê³µì§€ì‚¬í•­ ë“±ë¡ ì„±ê³µ');";
 			message += " location.href='"+multipartRequest.getContextPath()+"/board/listNotice.do'; ";
 			message +=" </script>";
 		    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}catch(Exception e) {
 			
 			message = " <script>";
-			message +=" alert('°øÁö»çÇ× µî·Ï ¿À·ù');');";
+			message +=" alert('ê³µì§€ì‚¬í•­ ë“±ë¡ ì‹¤íŒ¨');";
 			message +=" location.href='"+multipartRequest.getContextPath()+"/board/notice_articleForm.do'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -92,7 +92,7 @@ public class NoticeBoardControllerImpl implements NoticeBoardController {
 	}
 	
 	
-	// °øÁö»çÇ× »ó¼¼Á¤º¸
+	// ê³µì§€ì‚¬í•­ ë³´ê¸°
 	@Override
 	@RequestMapping(value = "/board/viewNoticeArticle.do",method = RequestMethod.GET)
 	public ModelAndView viewNoticeArticle(@RequestParam("notice_num")int notice_num, HttpServletRequest request, HttpServletResponse response)
@@ -106,7 +106,7 @@ public class NoticeBoardControllerImpl implements NoticeBoardController {
 	}
 	
 	
-	// °øÁö»çÇ× »èÁ¦ 
+	// ê³µì§€ì‚¬í•­ ì‚­ì œ
 	@Override
 	  @RequestMapping(value="/board/removeNoticeArticle.do" ,method = RequestMethod.POST)
 	  @ResponseBody
@@ -121,14 +121,14 @@ public class NoticeBoardControllerImpl implements NoticeBoardController {
 	 		noticeboardService.removeNoticeArticle(notice_num);
 	 	
 	 		message = "<script>";
-	 		message += " alert('°øÁö»çÇ× »èÁ¦ ¿Ï·á');";
+	 		message += " alert('ê³µì§€ì‚¬í•­ ì‚­ì œ ì„±ê³µ');";
 	 		message += " location.href='"+request.getContextPath()+"/board/listNotice.do';";
 	 		message +=" </script>";
 	 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	 	 
 	 	}catch(Exception e) {
 	 		message = "<script>";
-	 		message += " alert('ÀÚÁÖ¹¯´ÂÁú¹® »èÁ¦ ¿À·ù');";
+	 		message += " alert('ê³µì§€ì‚¬í•­ ì‚­ì œ ì‹¤íŒ¨');";
 	 		message += " location.href='"+request.getContextPath()+"/board/listNotice.do';";
 	 		message +=" </script>";
 	 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -162,14 +162,14 @@ public class NoticeBoardControllerImpl implements NoticeBoardController {
 		    try {
 		    	noticeboardService.modNoticeArticle(noticeMap);
 		       message = "<script>";
-			   message += " alert('¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.');";
+			   message += " alert('ê³µì§€ì‚¬í•­ ìˆ˜ì • ì„±ê³µ');";
 			   message += " location.href='"+multipartRequest.getContextPath()+"/board/viewNoticeArticle.do?notice_num="+notice_num+"';";
 			   message +=" </script>";
 		       resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		       
 		    }catch(Exception e) {
 		      message = "<script>";
-			  message += " alert('¼öÁ¤ ½ÇÆĞ');";
+			  message += " alert('ê³µì§€ì‚¬í•­ ìˆ˜ì • ì‹¤íŒ¨');";
 			  message += " location.href='"+multipartRequest.getContextPath()+"/board/viewNoticeArticle.do?notice_num="+notice_num+"';";
 			  message +=" </script>";
 		      resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

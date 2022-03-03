@@ -40,7 +40,7 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 
 	@Override
 	@RequestMapping(value="/myPageMain.do", method = RequestMethod.GET)
-	/*20220216 湲곗〈 留덉씠�럹�씠吏� 硫붿꽌�뱶�뿉�꽌 二쇰Ц �젙蹂� 議고쉶, 1:1 臾몄쓽 �궡�뿭�쓣 �쐞�븳 肄붾뱶 異붽��븿 �떊�슦二�*/
+	
 	public ModelAndView myPageMain(@RequestParam(required = false,value="message") String message, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		HttpSession session=request.getSession();
@@ -60,22 +60,6 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 		return mav;
 	}
 
-	/*
-	@Override
-	@RequestMapping(value="/myOrderList.do", method = {RequestMethod.GET})
-	public ModelAndView myOrderList(@RequestParam("mb_id") String mb_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		HttpSession session=request.getSession();
-		MemberVO orderer=(MemberVO)session.getAttribute("member");
-		
-		List<OrderVO> myOrderList=myPageService.findMyOrderInfo(mb_id);
-		mav.addObject("orderer", orderer);
-		mav.addObject("myOrderList",myOrderList);
-		return mav;
-	}*/
-	
 	
 	@Override
 	@RequestMapping(value="/myOrderList.do", method = {RequestMethod.GET})
@@ -99,9 +83,6 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 	}
 	
 	
-	// �젙�듅�썝 220216 �쉶�썝�젙蹂�
-	
-		// �쉶�썝�젙蹂� 議고쉶 �럹�씠吏�
 		@Override
 		@RequestMapping(value="/myInfoList.do" ,method = RequestMethod.GET)
 		public ModelAndView myInfoList(HttpServletRequest request, HttpServletResponse response)  throws Exception {
@@ -122,7 +103,7 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 			return mav;
 		}	
 		
-		// �쉶�썝�젙蹂� �닔�젙 �럹�씠吏�
+		
 		@Override
 		@RequestMapping(value="/myDetailInfo.do" ,method = RequestMethod.GET)
 		public ModelAndView myDetailInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception {
@@ -131,7 +112,7 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 			return mav;
 		}	
 		
-		// �쉶�썝�젙蹂� �닔�젙
+		
 		@Override
 		@RequestMapping(value="/modifyMyInfo.do" ,method = RequestMethod.POST)
 		public ResponseEntity modifyMyInfo(@RequestParam("attribute")  String attribute,
@@ -164,7 +145,7 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 			
 			mbMap.put("mb_id", mb_id);
 			
-			//�닔�젙�맂 �쉶�썝 �젙蹂대�� �떎�떆 �꽭�뀡�뿉 ���옣�븳�떎.
+			
 			memberVO=(MemberVO)myPageService.modifyMyInfo(mbMap);
 			session.removeAttribute("member");
 			session.setAttribute("member", memberVO);
@@ -176,7 +157,7 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 			resEntity =new ResponseEntity(message, responseHeaders, HttpStatus.OK);
 			return resEntity;
 		}
-		// �젙�듅�썝 220216 �쉶�썝�젙蹂� �걹
+		
 		
 	
 	

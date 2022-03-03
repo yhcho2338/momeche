@@ -10,7 +10,6 @@ import com.myspring.momeche001.order.vo.OrderVO;
 
 public interface OrderDAO {
 	
-	
 	public int insertOrderList(Map ProductMap) throws DataAccessException;
 	
 	public List<OrderVO> listMyOrderGoods(OrderVO orderVO) throws DataAccessException;
